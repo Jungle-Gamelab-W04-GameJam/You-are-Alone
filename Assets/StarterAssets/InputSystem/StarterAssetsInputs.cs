@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool interact;
+		public bool throwInput;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -25,12 +26,13 @@ namespace StarterAssets
 		public void OnMove(InputAction.CallbackContext context)
 		{
 			MoveInput(context.ReadValue<Vector2>());
-			
+			Debug.Log("움직임 감지됨");
+
 		}
 
 		public void OnLook(InputAction.CallbackContext context)
 		{
-			if(cursorInputForLook)
+			if (cursorInputForLook)
 			{
 				LookInput(context.ReadValue<Vector2>());
 			}
@@ -44,11 +46,17 @@ namespace StarterAssets
 		public void OnSprint(InputAction.CallbackContext context)
 		{
 			SprintInput(context.performed);
-		}
+            Debug.Log(context.performed);
+        }
 
 		public void OnInteract(InputAction.CallbackContext context)
 		{
 			InteractInput(context.performed);
+		}
+
+		public void OnThrow(InputAction.CallbackContext context)
+		{
+			ThrowInput(context.performed);
 		}
 #endif
 
@@ -56,7 +64,7 @@ namespace StarterAssets
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -75,9 +83,16 @@ namespace StarterAssets
 
 		public void InteractInput(bool newInteractState)
 		{
-		interact = newInteractState; 
+			interact = newInteractState;
+		}
+
+
+		public void ThrowInput(bool newThrowState)
+		{
+			throwInput = newThrowState;
 		}
 		
+
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
@@ -88,5 +103,5 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }
