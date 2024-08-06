@@ -29,13 +29,13 @@ public class ButtonController : MonoBehaviour
     {
         if (Switch)
         {
-            ButtonTrue.SetActive(false);
-            ButtonFalse.SetActive(true);
+            ButtonTrue.SetActive(true);
+            ButtonFalse.SetActive(false);
         }
         else
         {
-            ButtonTrue.SetActive(true);
-            ButtonFalse.SetActive(false);
+            ButtonTrue.SetActive(false);
+            ButtonFalse.SetActive(true);
         }
 
     }
