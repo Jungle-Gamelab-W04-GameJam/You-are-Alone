@@ -6,11 +6,14 @@ TagManager:
   tags:
   - CinemachineTarget
   - Prop
+
+  - Interactable
   - Key
   - Chest
   - Item
   - Heavy Tool
   - Axe
+
   layers:
   - Default
   - TransparentFX
