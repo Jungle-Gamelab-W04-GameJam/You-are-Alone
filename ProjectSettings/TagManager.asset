@@ -12,6 +12,7 @@ TagManager:
   - Axe
   - Key
   - Spyglass
+  - Camcorder
   layers:
   - Default
   - TransparentFX
