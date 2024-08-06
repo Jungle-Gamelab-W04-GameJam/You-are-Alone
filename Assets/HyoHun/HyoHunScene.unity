@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 1642582191}
   - component: {fileID: 1642582190}
   - component: {fileID: 1642582189}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Prop
   m_TagString: Prop
   m_Icon: {fileID: 0}
@@ -1561,6 +1561,10 @@ PrefabInstance:
     - target: {fileID: 290641766739280401, guid: 586cf814d0e02da46bb151fa23e860c3, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927451933558883142, guid: 586cf814d0e02da46bb151fa23e860c3, type: 3}
+      propertyPath: pushLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3027109725438724428, guid: 586cf814d0e02da46bb151fa23e860c3, type: 3}
       propertyPath: m_LocalPosition.x

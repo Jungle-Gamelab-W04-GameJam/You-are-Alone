@@ -50,6 +50,13 @@ public class RayInteract : MonoBehaviour
             ThrowProp();
             _input.throwInput = false; // Reset throw input state after input is processed
         }
+
+        if(_input.use)
+        {
+            UseItem();
+            _input.use = false;
+        }
+
     }
 
     private void FixedUpdate()
@@ -137,10 +144,7 @@ public class RayInteract : MonoBehaviour
 
     private void ThrowProp()
     {
-        if (holdingProp == null)
-        {
-            return;
-        }
+        if (holdingProp == null){return;}
 
         if (holdingRb != null)
         {
@@ -159,6 +163,18 @@ public class RayInteract : MonoBehaviour
         holdingProp = null;
         moveTarget = null;
     }
+
+    private void UseItem()
+    {
+        if (holdingProp == null) { return; }
+
+        if(holdingRb != null)
+        {
+
+        }
+    }
+
+
 
     private void MoveHoldingProp()
     {

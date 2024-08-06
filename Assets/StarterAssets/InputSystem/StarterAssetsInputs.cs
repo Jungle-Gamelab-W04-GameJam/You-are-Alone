@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool interact;
 		public bool throwInput;
+		public bool use;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -26,7 +27,6 @@ namespace StarterAssets
 		public void OnMove(InputAction.CallbackContext context)
 		{
 			MoveInput(context.ReadValue<Vector2>());
-			Debug.Log("움직임 감지됨");
 
 		}
 
@@ -57,6 +57,11 @@ namespace StarterAssets
 		public void OnThrow(InputAction.CallbackContext context)
 		{
 			ThrowInput(context.performed);
+		}
+
+		public void OnUse(InputAction.CallbackContext context)
+		{
+			UseInput(context.performed);
 		}
 #endif
 
@@ -90,6 +95,11 @@ namespace StarterAssets
 		public void ThrowInput(bool newThrowState)
 		{
 			throwInput = newThrowState;
+		}
+
+		public void UseInput(bool newUseState)
+		{
+		use = newUseState; 
 		}
 		
 
