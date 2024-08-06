@@ -91,6 +91,7 @@ public class RayInteract : MonoBehaviour
                 else if (hitTarget.tag == "Interactable")
                 {
                     Debug.Log("Interacting");
+
                     // Call internal method of the hitTarget
                 }
             }
