@@ -6,14 +6,12 @@ TagManager:
   tags:
   - CinemachineTarget
   - Prop
-
-  - Interactable
-  - Key
+  - Heavy Tool
   - Chest
   - Item
-  - Heavy Tool
   - Axe
-
+  - Key
+  - Spyglass
   layers:
   - Default
   - TransparentFX
