@@ -46,7 +46,6 @@ namespace StarterAssets
 		public void OnSprint(InputAction.CallbackContext context)
 		{
 			SprintInput(context.performed);
-            Debug.Log(context.performed);
         }
 
 		public void OnInteract(InputAction.CallbackContext context)

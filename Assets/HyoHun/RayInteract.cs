@@ -30,6 +30,8 @@ public class RayInteract : MonoBehaviour
     private Rigidbody holdingRb;
     private Collider holdingCollider;
 
+    public bool isZoomIn = false;
+
     private void Start()
     {
         // Assign the main camera for raycasting
@@ -80,10 +82,11 @@ public class RayInteract : MonoBehaviour
             {
                 // Store the hit game object in hitTarget
                 GameObject hitTarget = hit.collider.gameObject;
+                GameObject rootObject = hitTarget.transform.root.gameObject;
 
                 if (hitTarget.layer == LayerMask.NameToLayer("Prop")) // Check if it has the tag that allows picking up
                 {
-                    HoldProp(hitTarget.gameObject);
+                    HoldProp(rootObject);
                 }
                 else if (hitTarget.tag == "Interactable")
                 {
@@ -99,19 +102,18 @@ public class RayInteract : MonoBehaviour
         }
     }
 
-    private void HoldProp(GameObject hitTarget)
+    private void HoldProp(GameObject rootObject)
     {
         // Store the position of the collision object in moveTarget
-        moveTarget = hitTarget.transform;
+        moveTarget = rootObject.transform;
         // Store the distance to the object in targetDistance
         targetDistance = pickUpOffset;
 
         // Assign the object being held
-        holdingProp = hitTarget;
+        holdingProp = rootObject;
         holdingRb = holdingProp.GetComponent<Rigidbody>();
         holdingCollider = holdingProp.GetComponent<Collider>();
 
-        //add
         holdingRb.constraints = RigidbodyConstraints.FreezeRotation;
 
         // Disable gravity while holding
@@ -166,13 +168,13 @@ public class RayInteract : MonoBehaviour
 
     private void UseItem()
     {
+        Debug.Log("Use Item »£√‚");
         if (holdingProp == null) { return; }
 
         if(holdingProp != null)
         {
             if(holdingProp.tag == "Spyglass")
             {
-                bool isZoomIn = false;
                 Spyglass spyGlass = holdingProp.GetComponent<Spyglass>();
 
                 if (!isZoomIn)
