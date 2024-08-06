@@ -168,9 +168,23 @@ public class RayInteract : MonoBehaviour
     {
         if (holdingProp == null) { return; }
 
-        if(holdingRb != null)
+        if(holdingProp != null)
         {
+            if(holdingProp.tag == "Spyglass")
+            {
+                bool isZoomIn = false;
+                Spyglass spyGlass = holdingProp.GetComponent<Spyglass>();
 
+                if (!isZoomIn)
+                {
+                    spyGlass.ZoomIn();
+                    isZoomIn = !isZoomIn;
+                } else
+                {
+                    spyGlass.ZoomOut();
+                    isZoomIn = !isZoomIn;
+                }
+            }
         }
     }
 
