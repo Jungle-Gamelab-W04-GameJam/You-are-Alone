@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 984668208155273736}
   - component: {fileID: 1205316139331005134}
   m_Layer: 0
-  m_Name: Box (7)
+  m_Name: Moniter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,7 +393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46d5932487d831e49be14a9dcba25e3b, type: 2}
+  - {fileID: 2100000, guid: e8fb6882a20d31f4e9535595e045bcec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1168,6 +1168,7 @@ MonoBehaviour:
   camcorderCamera: {fileID: 270170377417807948}
   camcorderView: {fileID: 8400000, guid: fab088fd02168a449971ab96283391bd, type: 2}
   monitorObject: {fileID: 0}
+  camcorderDisplayObject: {fileID: 927899953761142044}
 --- !u!65 &6012185347483531962
 BoxCollider:
   m_ObjectHideFlags: 0
