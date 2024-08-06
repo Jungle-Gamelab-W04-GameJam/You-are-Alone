@@ -4,14 +4,17 @@ public class Key : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        // 충돌한 오브젝트의 태그가 "Chest"인지 확인
+        // Check if the collided object's tag is "Chest"
         if (collision.collider.CompareTag("Chest"))
         {
-            // Chest 스크립트의 Unlock 메소드 호출
+            // Get the Chest script from the collided object
             Chest chest = collision.collider.GetComponent<Chest>();
             if (chest != null)
             {
+                // Call the Unlock method on the Chest script
                 chest.Unlock();
+
+                // Destroy the Key object
                 Destroy(gameObject);
             }
         }

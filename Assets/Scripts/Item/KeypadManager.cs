@@ -1,29 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections; // IEnumerator를 사용하기 위해 추가
+using System.Collections; // Added to use IEnumerator
 
 public class KeypadManager : MonoBehaviour
 {
     public GameObject keypadUI; // Keypad UI Canvas
-    public TextMeshProUGUI inputText; // 입력된 숫자를 표시할 텍스트
-    public TextMeshProUGUI successText; // 성공 메시지를 표시할 텍스트
-    public TextMeshProUGUI failText; // 실패 메시지를 표시할 텍스트
-    public string correctCode = "123456"; // 정답 코드
-    private string enteredCode = ""; // 플레이어가 입력한 코드
-    public bool KeypadUnlocked { get; private set; } = false; // 키패드가 열렸는지 여부
-    private float failDisplayTime = 2f; // 실패 메시지를 표시할 시간
-    private float successDisplayTime = 1f; // 성공 메시지를 표시할 시간
+    public TextMeshProUGUI inputText; // Text to show entered numbers
+    public TextMeshProUGUI successText; // Text to show success message
+    public TextMeshProUGUI failText; // Text to show fail message
+    public string correctCode = "123456"; // The correct code to unlock
+    private string enteredCode = ""; // The code entered by the player
+    public bool KeypadUnlocked { get; private set; } = false; // Whether the keypad is unlocked
+    private float failDisplayTime = 2f; // Time to display the fail message
+    private float successDisplayTime = 1f; // Time to display the success message
 
     void Start()
     {
-        // keyPadUI.SetActive(false); // UI를 처음에는 비활성화 상태로 유지
+        // Initially hide the success and fail messages
         successText.gameObject.SetActive(false);
         failText.gameObject.SetActive(false);
     }
 
     public void OnNumberButtonClick(string number)
     {
+        // Add the number to the entered code if less than 6 digits
         if (enteredCode.Length < 6)
         {
             enteredCode += number;
@@ -33,12 +34,14 @@ public class KeypadManager : MonoBehaviour
 
     public void OnClearButtonClick()
     {
+        // Clear the entered code
         enteredCode = "";
         inputText.text = enteredCode;
     }
 
     public void OnConfirmButtonClick()
     {
+        // Check the code if it has 6 digits
         if (enteredCode.Length == 6)
         {
             CheckCode();
@@ -47,6 +50,7 @@ public class KeypadManager : MonoBehaviour
 
     private void CheckCode()
     {
+        // Compare the entered code with the correct code
         if (enteredCode == correctCode)
         {
             StartCoroutine(ShowSuccessMessage());
@@ -59,6 +63,7 @@ public class KeypadManager : MonoBehaviour
 
     private IEnumerator ShowSuccessMessage()
     {
+        // Display the success message and hide it after a delay
         inputText.text = "";
         successText.gameObject.SetActive(true);
         yield return new WaitForSeconds(successDisplayTime);
@@ -69,6 +74,7 @@ public class KeypadManager : MonoBehaviour
 
     private IEnumerator ShowFailMessage()
     {
+        // Display the fail message and hide it after a delay
         inputText.text = "";
         failText.gameObject.SetActive(true);
         yield return new WaitForSeconds(failDisplayTime);
@@ -78,6 +84,7 @@ public class KeypadManager : MonoBehaviour
 
     public void ShowKeypad()
     {
+        // Show the keypad UI and unlock the cursor
         keypadUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -85,6 +92,7 @@ public class KeypadManager : MonoBehaviour
 
     public void HideKeypad()
     {
+        // Hide the keypad UI and lock the cursor
         keypadUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
