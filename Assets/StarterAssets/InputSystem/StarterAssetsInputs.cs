@@ -26,12 +26,13 @@ namespace StarterAssets
 		public void OnMove(InputAction.CallbackContext context)
 		{
 			MoveInput(context.ReadValue<Vector2>());
-			
+			Debug.Log("움직임 감지됨");
+
 		}
 
 		public void OnLook(InputAction.CallbackContext context)
 		{
-			if(cursorInputForLook)
+			if (cursorInputForLook)
 			{
 				LookInput(context.ReadValue<Vector2>());
 			}
@@ -63,7 +64,7 @@ namespace StarterAssets
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -82,14 +83,16 @@ namespace StarterAssets
 
 		public void InteractInput(bool newInteractState)
 		{
-		interact = newInteractState; 
+			interact = newInteractState;
 		}
+
 
 		public void ThrowInput(bool newThrowState)
 		{
 			throwInput = newThrowState;
 		}
 		
+
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
@@ -100,5 +103,5 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }
