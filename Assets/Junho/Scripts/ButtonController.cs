@@ -8,7 +8,9 @@ public class ButtonController : MonoBehaviour
     public bool Switch;
     public GameObject ButtonFalse;
     public GameObject ButtonTrue;
+    public GameObject Door;
 
+    private Stage2_Door_Controller doorController;
     private Material TrueMaterial;
     private Material FalseMaterial;
 
@@ -22,6 +24,7 @@ public class ButtonController : MonoBehaviour
         FalseMaterial = ButtonFalse.transform.GetComponent<Renderer>().material;
         TrueMaterial.color = Color.green;
         FalseMaterial.color = Color.red;
+        doorController = Door.GetComponent<Stage2_Door_Controller>();
     }
 
     // Update is called once per frame
@@ -31,11 +34,13 @@ public class ButtonController : MonoBehaviour
         {
             ButtonTrue.SetActive(true);
             ButtonFalse.SetActive(false);
+            doorController.OpenDoor();
         }
         else
         {
             ButtonTrue.SetActive(false);
             ButtonFalse.SetActive(true);
+            doorController.CloseDoor();
         }
 
 
