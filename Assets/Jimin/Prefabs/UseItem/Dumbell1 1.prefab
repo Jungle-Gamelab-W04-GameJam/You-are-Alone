@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3650369333859543604}
   - component: {fileID: 1784032350116759864}
   - component: {fileID: 4556835372885913944}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Dumbell1 1
   m_TagString: Heavy Tool
   m_Icon: {fileID: 0}

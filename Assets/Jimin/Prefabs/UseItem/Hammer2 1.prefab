@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7940153126155055471}
   - component: {fileID: 8760973670699787720}
   - component: {fileID: 974610046984037335}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Hammer2 1
   m_TagString: Heavy Tool
   m_Icon: {fileID: 0}

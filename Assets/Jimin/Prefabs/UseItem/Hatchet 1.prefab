@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 582552176935229715}
   - component: {fileID: 5227868911874691140}
   - component: {fileID: 5664418897861008319}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Hatchet 1
   m_TagString: Axe
   m_Icon: {fileID: 0}
