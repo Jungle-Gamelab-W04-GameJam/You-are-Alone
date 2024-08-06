@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 723000821834833147}
   - component: {fileID: 9109008458599918191}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Button
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
