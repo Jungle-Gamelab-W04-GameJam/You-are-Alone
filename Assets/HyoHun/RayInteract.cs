@@ -6,29 +6,33 @@ using UnityEngine.InputSystem;
 
 public class RayInteract : MonoBehaviour
 {
-    //광선을 발사할 카메라
+    // Camera to cast the ray from
     private Camera playerCam;
-    //광선의 길이
-    [SerializeField]float distance = 20f;
-    //광선이 검사할 레이어
+    // Length of the ray
+    [SerializeField] float distance = 20f;
+    // Layer to check for the ray
     public LayerMask whatIsTarget;
 
-    //물체 상호작용시 갱신해줄 위치정보
+    // Position information to update when interacting with an object
     private Transform moveTarget;
-    //물체 상호작용시 거리유지를 위해 할당받을 거리값
+    // Distance value to maintain when interacting with an object
     private float targetDistance;
 
-    //들어올 입력
+    // Input handler
     private StarterAssetsInputs _input;
 
-    //들고 있을 오브젝트
+    // Object being held
     public GameObject holdingProp;
 
     [SerializeField] float pickUpOffset = 2f;
+    [SerializeField] float throwForce = 10f;
+
+    private Rigidbody holdingRb;
+    private Collider holdingCollider;
 
     private void Start()
     {
-        //레이캐스트할 카메라에 메인카메라로 할당
+        // Assign the main camera for raycasting
         playerCam = Camera.main;
         _input = GetComponent<StarterAssetsInputs>();
     }
@@ -38,18 +42,21 @@ public class RayInteract : MonoBehaviour
         if (_input.interact)
         {
             OnInteract();
-            _input.interact = false; // 입력 처리가 완료된 후 interact 상태를 초기화
+            _input.interact = false; // Reset interact state after input is processed
         }
 
+        if (_input.throwInput)
+        {
+            ThrowProp();
+            _input.throwInput = false; // Reset throw input state after input is processed
+        }
+    }
+
+    private void FixedUpdate()
+    {   //Calling from FixedUpdate for Physical Conflict Detection
         if (holdingProp != null)
         {
-            Vector3 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
-            Vector3 rayDir = playerCam.transform.forward;
-            Ray ray = new Ray(rayOrigin, rayDir);
-            Debug.DrawRay(ray.origin, ray.direction * 20f, Color.green);
-
-            // 충돌 오브젝트의 위치값을 "광선의 시작점(카메라 정중앙) + (광선 방향 x 물체까지 거리)" 로 할당
-            moveTarget.position = ray.origin + ray.direction * targetDistance;
+            MoveHoldingProp();
         }
     }
 
@@ -64,38 +71,107 @@ public class RayInteract : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, distance, whatIsTarget))
             {
-                // 충돌 게임오브젝트를 hitTarget에 저장
+                // Store the hit game object in hitTarget
                 GameObject hitTarget = hit.collider.gameObject;
 
-                // 충돌 오브젝트의 위치값을 moveTarget에 저장
-                moveTarget = hitTarget.transform;
-                // 충돌 물체까지의 거리를 targetDistance에 저장
-                //targetDistance = hit.distance;
-                targetDistance = pickUpOffset;
-
-                // 들고 있는 오브젝트로 할당
-                holdingProp = hitTarget;
-
-                /*
-                if(targetDistance < pickUpOffset)
+                if (hitTarget.layer == LayerMask.NameToLayer("Prop")) // Check if it has the tag that allows picking up
                 {
-                    targetDistance = pickUpOffset;
+                    HoldProp(hitTarget.gameObject);
                 }
-*/
-                Debug.Log("Picked up: " + holdingProp.name);
+                else if (hitTarget.tag == "Interactable")
+                {
+                    Debug.Log("Interacting");
+                    // Call internal method of the hitTarget
+                }
             }
         }
         else
         {
-            // 들고 있는 물체를 떨어뜨림
-            //물체를 떨어뜨리기 전에 속도를 초기화해서 살살 떨어지도록
-            Rigidbody holdingRb = holdingProp.GetComponent<Rigidbody>();
-            holdingRb.velocity = Vector3.zero;
+            // Drop the held object
+            DropProp();
+        }
+    }
 
+    private void HoldProp(GameObject hitTarget)
+    {
+        // Store the position of the collision object in moveTarget
+        moveTarget = hitTarget.transform;
+        // Store the distance to the object in targetDistance
+        targetDistance = pickUpOffset;
+
+        // Assign the object being held
+        holdingProp = hitTarget;
+        holdingRb = holdingProp.GetComponent<Rigidbody>();
+        holdingCollider = holdingProp.GetComponent<Collider>();
+
+        //add
+        holdingRb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        // Disable gravity while holding
+        if (holdingRb != null)
+        {
+            holdingRb.useGravity = false;
+        }
+
+        Debug.Log("Picked up: " + holdingProp.name);
+    }
+
+    private void DropProp()
+    {
+        if (holdingProp != null)
+        {
+            // Re-enable gravity
+            if (holdingRb != null)
+            {
+                holdingRb.useGravity = true;
+                holdingRb.velocity = Vector3.zero; // Reset velocity before dropping
+            }
+
+            holdingRb.constraints = RigidbodyConstraints.None;
             holdingProp = null;
             moveTarget = null;
 
             Debug.Log("Dropped the object.");
         }
+    }
+
+    private void ThrowProp()
+    {
+        if (holdingProp == null)
+        {
+            return;
+        }
+
+        if (holdingRb != null)
+        {
+            // Apply force in the direction the player is facing
+            Vector3 throwDirection = playerCam.transform.forward;
+            holdingRb.velocity = Vector3.zero; // Reset velocity before throwing
+            holdingRb.AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
+
+            // Re-enable gravity
+            holdingRb.useGravity = true;
+
+            Debug.Log("Threw the object.");
+        }
+
+        holdingRb.constraints = RigidbodyConstraints.None;
+        holdingProp = null;
+        moveTarget = null;
+    }
+
+    private void MoveHoldingProp()
+    {
+        Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+        Vector3 direction = desiredPosition - holdingRb.position;
+        float distance = direction.magnitude;
+
+        if (Physics.Raycast(holdingRb.position, direction, out RaycastHit hit, distance))
+        {
+            // Adjust position to avoid collision
+            desiredPosition = hit.point - direction.normalized * holdingCollider.bounds.extents.magnitude;
+        }
+
+        holdingRb.MovePosition(desiredPosition);
     }
 }

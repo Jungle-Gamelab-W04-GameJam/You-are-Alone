@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool interact;
+		public bool throwInput;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -44,11 +45,17 @@ namespace StarterAssets
 		public void OnSprint(InputAction.CallbackContext context)
 		{
 			SprintInput(context.performed);
-		}
+            Debug.Log(context.performed);
+        }
 
 		public void OnInteract(InputAction.CallbackContext context)
 		{
 			InteractInput(context.performed);
+		}
+
+		public void OnThrow(InputAction.CallbackContext context)
+		{
+			ThrowInput(context.performed);
 		}
 #endif
 
@@ -76,6 +83,11 @@ namespace StarterAssets
 		public void InteractInput(bool newInteractState)
 		{
 		interact = newInteractState; 
+		}
+
+		public void ThrowInput(bool newThrowState)
+		{
+			throwInput = newThrowState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)
