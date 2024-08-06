@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Item
   - CinemachineTarget
-  - Key
-  - Chest
+  - Prop
   layers:
   - Default
   - TransparentFX
@@ -15,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Prop
   - 
   - 
   - 
