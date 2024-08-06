@@ -38,5 +38,29 @@ public class ButtonController : MonoBehaviour
             ButtonFalse.SetActive(true);
         }
 
+
     }
+    public void Use()
+    {
+        if (!Switch) // Play only when Switch is false.
+        {
+            StartCoroutine(SwitchOnCoroutine());
+        }
+    }
+
+    private IEnumerator SwitchOnCoroutine()
+    {
+        Switch = true;
+        yield return new WaitForSeconds(3);
+        Switch = false;
+    }
+
+    private void OnCollisionEnter(Collision collision) // when it take some bugs, let's make it by triggerEnter.
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop")) // change name by Object????
+        {
+            Use();
+        }
+    }
+
 }

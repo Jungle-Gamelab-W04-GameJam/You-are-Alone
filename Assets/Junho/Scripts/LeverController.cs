@@ -38,8 +38,12 @@ public class LeverController : MonoBehaviour
             LeverUp.SetActive(true);
 
             cubeMaterial.color = Color.red;
-
         }
 
+    }
+
+    public void Use()
+    {
+        Switch = !Switch;
     }
 }
