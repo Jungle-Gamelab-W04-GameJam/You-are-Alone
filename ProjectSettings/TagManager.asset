@@ -6,6 +6,11 @@ TagManager:
   tags:
   - CinemachineTarget
   - Prop
+  - Key
+  - Chest
+  - Item
+  - Heavy Tool
+  - Axe
   layers:
   - Default
   - TransparentFX
@@ -14,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Prop
-  - 
+  - Object
   - 
   - 
   - 
