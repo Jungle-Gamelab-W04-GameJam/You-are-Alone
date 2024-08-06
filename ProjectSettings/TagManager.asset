@@ -10,6 +10,7 @@ TagManager:
   - Chest
   - Item
   - Heavy Tool
+  - Axe
   layers:
   - Default
   - TransparentFX
