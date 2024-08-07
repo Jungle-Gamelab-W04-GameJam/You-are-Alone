@@ -115,6 +115,14 @@ public class RayInteract : MonoBehaviour
                             Debug.LogError("No Scripts in Button!");
                         }
                         break;
+
+                    case "LightButton":
+                        LightButton lightButton = rootObject.GetComponent<LightButton>();
+                        if(lightButton != null)
+                        {   
+                            lightButton.Use();
+                        }
+                        break;
                     default:
                         Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
                         break;
