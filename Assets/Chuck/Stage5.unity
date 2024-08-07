@@ -2564,7 +2564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a37158b731ce3e45877220b5412e304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Stage8
+  nextSceneName: Stage7
 --- !u!1 &199608191
 GameObject:
   m_ObjectHideFlags: 0
@@ -16822,7 +16822,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 115324, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
       propertyPath: m_Name
-      value: door_2 (2)
+      value: FinighDoor
       objectReference: {fileID: 0}
     - target: {fileID: 415124, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16869,6 +16869,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
+--- !u!1 &2071649553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115324, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
+  m_PrefabInstance: {fileID: 2071649552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2073567892
 GameObject:
   m_ObjectHideFlags: 0
@@ -17612,6 +17617,7 @@ MonoBehaviour:
   successText: {fileID: 874576885}
   failText: {fileID: 12453773}
   correctCode: 478354
+  door: {fileID: 2071649553}
 --- !u!1001 &4538107589524511181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17734,6 +17740,7 @@ SceneRoots:
   - {fileID: 1844128226}
   - {fileID: 2629889730811738343}
   - {fileID: 566130167}
+  - {fileID: 2071649552}
   - {fileID: 563272682}
   - {fileID: 1321660227}
   - {fileID: 1966361927}
@@ -17891,7 +17898,6 @@ SceneRoots:
   - {fileID: 155691530}
   - {fileID: 743247990}
   - {fileID: 1937196084}
-  - {fileID: 2071649552}
   - {fileID: 969172095}
   - {fileID: 1976898569}
   - {fileID: 2142757248}
