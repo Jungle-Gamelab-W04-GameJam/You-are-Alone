@@ -60,7 +60,7 @@ public class ButtonController : MonoBehaviour
         Switch = false;
     }
 
-    private void OnCollisionEnter(Collision collision) // when it take some bugs, let's make it by triggerEnter.
+    private void OnTriggerEnter(Collider collision) // when it take some bugs, let's make it by triggerEnter.
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Prop")) // change name by Object????
         {
