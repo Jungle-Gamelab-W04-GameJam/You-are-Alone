@@ -15,8 +15,10 @@ namespace StarterAssets
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 6.0f;
-		[Tooltip("Rotation speed of the character")]
+		public float SprintSpeed = 7.0f;
+        [Tooltip("Crouch speed of the character in m/s")]
+        public float CrouchSpeed = 2.5f;
+        [Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
@@ -50,6 +52,10 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+		[Tooltip("Original viewPos")]
+		public Vector3 originViewPos = new Vector3(0f, 1.375f, 0f);
+		[Tooltip("Crouch viewPos")]
+		public Vector3 crouchViewPos = new Vector3(0f, 0.7f, 0f);
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -120,6 +126,7 @@ namespace StarterAssets
 		private void LateUpdate()
 		{
 			CameraRotation();
+			CrouchCameraPos();
 		}
 
 		private void GroundedCheck()
@@ -152,11 +159,29 @@ namespace StarterAssets
 		}
 
 
+        private void CrouchCameraPos()
+        {
+            // Determine the target position based on crouch state
+            Vector3 targetPosition = _input.crouch ? crouchViewPos : originViewPos;
 
-		private void Move()
+            // Smoothly interpolate to the target position
+            CinemachineCameraTarget.transform.localPosition = Vector3.Lerp(CinemachineCameraTarget.transform.localPosition, targetPosition, Time.deltaTime * 10f);
+        }
+
+
+
+
+        private void Move()
 		{
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = MoveSpeed;
+			if (_input.sprint)
+			{
+				targetSpeed = SprintSpeed;
+			} else if (_input.crouch)
+			{
+				targetSpeed = CrouchSpeed;
+			}
+
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
