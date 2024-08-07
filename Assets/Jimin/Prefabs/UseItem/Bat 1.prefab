@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6281777074235995922}
   - component: {fileID: 8127218036640285656}
   - component: {fileID: 4272728741022340061}
+  - component: {fileID: 7463029090612454305}
   m_Layer: 6
   m_Name: Bat 1
   m_TagString: Untagged
@@ -110,4 +111,26 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!64 &7463029090612454305
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766828980278665741}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 716655249603938094, guid: a065356909044b0428d4cdd57a9e3384, type: 3}
