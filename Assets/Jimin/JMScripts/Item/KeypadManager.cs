@@ -14,6 +14,7 @@ public class KeypadManager : MonoBehaviour
     public bool KeypadUnlocked { get; private set; } = false; // Whether the keypad is unlocked
     private float failDisplayTime = 2f; // Time to display the fail message
     private float successDisplayTime = 1f; // Time to display the success message
+    public GameObject door; // Reference to the door object to be destroyed
 
     void Start()
     {
@@ -70,6 +71,13 @@ public class KeypadManager : MonoBehaviour
         successText.gameObject.SetActive(false);
         KeypadUnlocked = true;
         HideKeypad();
+
+        // Destroy the door object
+        if (door != null)
+        {
+            Destroy(door);
+            Debug.Log("Door unlocked and destroyed.");
+        }
     }
 
     private IEnumerator ShowFailMessage()
@@ -88,6 +96,8 @@ public class KeypadManager : MonoBehaviour
         keypadUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        // Pause the game
+        Time.timeScale = 0f;
     }
 
     public void HideKeypad()
@@ -98,5 +108,8 @@ public class KeypadManager : MonoBehaviour
         Cursor.visible = false;
         OnClearButtonClick();
         successText.gameObject.SetActive(false);
+
+        // Resume the game
+        Time.timeScale = 1f;
     }
 }
