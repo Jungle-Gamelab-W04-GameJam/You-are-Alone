@@ -16,9 +16,9 @@ namespace StarterAssets
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 7.0f;
-        [Tooltip("Crouch speed of the character in m/s")]
-        public float CrouchSpeed = 2.5f;
-        [Tooltip("Rotation speed of the character")]
+		[Tooltip("Crouch speed of the character in m/s")]
+		public float CrouchSpeed = 2.5f;
+		[Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
@@ -70,7 +70,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
@@ -84,11 +84,11 @@ namespace StarterAssets
 		{
 			get
 			{
-				#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM
 				return _playerInput.currentControlScheme == "KeyboardMouse";
-				#else
+#else
 				return false;
-				#endif
+#endif
 			}
 		}
 
@@ -138,46 +138,55 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
-			// if there is an input
-			if (_input.look.sqrMagnitude >= _threshold)
+			if (Time.timeScale == 0f)
 			{
-				//Don't multiply mouse input by Time.deltaTime
-				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-				
-				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+				return;
+			}
+			else
+			{
+				// if there is an input
+				if (_input.look.sqrMagnitude >= _threshold)
+				{
+					//Don't multiply mouse input by Time.deltaTime
+					float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-				// clamp our pitch rotation
-				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+					_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+					_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
 
-				// Update Cinemachine camera target pitch
-				CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+					// clamp our pitch rotation
+					_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-				// rotate the player left and right
-				transform.Rotate(Vector3.up * _rotationVelocity);
+					// Update Cinemachine camera target pitch
+					CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+					// rotate the player left and right
+					transform.Rotate(Vector3.up * _rotationVelocity);
+				}
+
 			}
 		}
 
 
-        private void CrouchCameraPos()
-        {
-            // Determine the target position based on crouch state
-            Vector3 targetPosition = _input.crouch ? crouchViewPos : originViewPos;
+		private void CrouchCameraPos()
+		{
+			// Determine the target position based on crouch state
+			Vector3 targetPosition = _input.crouch ? crouchViewPos : originViewPos;
 
-            // Smoothly interpolate to the target position
-            CinemachineCameraTarget.transform.localPosition = Vector3.Lerp(CinemachineCameraTarget.transform.localPosition, targetPosition, Time.deltaTime * 10f);
-        }
-
-
+			// Smoothly interpolate to the target position
+			CinemachineCameraTarget.transform.localPosition = Vector3.Lerp(CinemachineCameraTarget.transform.localPosition, targetPosition, Time.deltaTime * 10f);
+		}
 
 
-        private void Move()
+
+
+		private void Move()
 		{
 			float targetSpeed = MoveSpeed;
 			if (_input.sprint)
 			{
 				targetSpeed = SprintSpeed;
-			} else if (_input.crouch)
+			}
+			else if (_input.crouch)
 			{
 				targetSpeed = CrouchSpeed;
 			}

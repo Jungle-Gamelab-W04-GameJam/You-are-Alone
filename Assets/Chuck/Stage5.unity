@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -2564,7 +2564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a37158b731ce3e45877220b5412e304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Stage8
+  nextSceneName: Stage7
 --- !u!1 &199608191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,7 +3363,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -4698,7 +4698,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -5392,7 +5392,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnClearButtonClick
         m_Mode: 1
@@ -8269,7 +8269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnConfirmButtonClick
         m_Mode: 1
@@ -10091,7 +10091,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -12240,7 +12240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -12776,7 +12776,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -13365,7 +13365,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -14910,7 +14910,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -15108,7 +15108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -16822,7 +16822,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 115324, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
       propertyPath: m_Name
-      value: door_2 (2)
+      value: FinighDoor
       objectReference: {fileID: 0}
     - target: {fileID: 415124, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17734,6 +17734,7 @@ SceneRoots:
   - {fileID: 1844128226}
   - {fileID: 2629889730811738343}
   - {fileID: 566130167}
+  - {fileID: 2071649552}
   - {fileID: 563272682}
   - {fileID: 1321660227}
   - {fileID: 1966361927}
@@ -17891,7 +17892,6 @@ SceneRoots:
   - {fileID: 155691530}
   - {fileID: 743247990}
   - {fileID: 1937196084}
-  - {fileID: 2071649552}
   - {fileID: 969172095}
   - {fileID: 1976898569}
   - {fileID: 2142757248}

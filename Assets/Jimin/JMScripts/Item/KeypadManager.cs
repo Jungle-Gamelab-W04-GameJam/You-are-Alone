@@ -14,6 +14,7 @@ public class KeypadManager : MonoBehaviour
     public bool KeypadUnlocked { get; private set; } = false; // Whether the keypad is unlocked
     private float failDisplayTime = 2f; // Time to display the fail message
     private float successDisplayTime = 1f; // Time to display the success message
+    public GameObject door; // Reference to the door object to be destroyed
 
     void Start()
     {
@@ -28,7 +29,8 @@ public class KeypadManager : MonoBehaviour
         if (enteredCode.Length < 6)
         {
             enteredCode += number;
-            inputText.text = enteredCode;
+            inputText.text = enteredCode; // Update the input text UI
+            Debug.Log("Entered Code: " + enteredCode); // Log for debugging
         }
     }
 
@@ -66,10 +68,16 @@ public class KeypadManager : MonoBehaviour
         // Display the success message and hide it after a delay
         inputText.text = "";
         successText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(successDisplayTime);
+        yield return new WaitForSecondsRealtime(successDisplayTime); // Use WaitForSecondsRealtime
         successText.gameObject.SetActive(false);
         KeypadUnlocked = true;
         HideKeypad();
+        // Destroy the door object
+        if (door != null)
+        {
+            Destroy(door);
+            Debug.Log("Door unlocked and destroyed.");
+        }
     }
 
     private IEnumerator ShowFailMessage()
@@ -77,7 +85,7 @@ public class KeypadManager : MonoBehaviour
         // Display the fail message and hide it after a delay
         inputText.text = "";
         failText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(failDisplayTime);
+        yield return new WaitForSecondsRealtime(failDisplayTime); // Use WaitForSecondsRealtime
         failText.gameObject.SetActive(false);
         OnClearButtonClick();
     }
@@ -88,6 +96,7 @@ public class KeypadManager : MonoBehaviour
         keypadUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0f;
     }
 
     public void HideKeypad()
@@ -98,5 +107,6 @@ public class KeypadManager : MonoBehaviour
         Cursor.visible = false;
         OnClearButtonClick();
         successText.gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
