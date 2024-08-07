@@ -104,6 +104,18 @@ public class RayInteract : MonoBehaviour
                             Debug.LogError("No Scripts in Lever!");
                         }
                         break;
+
+                    case "JMLever":
+                        JiminLeverController jiminLever = rootObject.GetComponent<JiminLeverController>();
+                        if (jiminLever != null)
+                        {
+                            jiminLever.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in Lever!");
+                        }
+                        break;
                     case "Button":
                         ButtonController button = rootObject.GetComponent<ButtonController>();
                         if (button != null)
