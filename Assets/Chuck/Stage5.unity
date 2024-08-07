@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -3363,7 +3363,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -4698,7 +4698,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -5392,7 +5392,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnClearButtonClick
         m_Mode: 1
@@ -8269,7 +8269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnConfirmButtonClick
         m_Mode: 1
@@ -10091,7 +10091,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -12240,7 +12240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -12776,7 +12776,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -13365,7 +13365,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -14910,7 +14910,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -15108,7 +15108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2629889730811738345}
         m_TargetAssemblyTypeName: KeypadManager, Assembly-CSharp
         m_MethodName: OnNumberButtonClick
         m_Mode: 5
@@ -16869,11 +16869,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
---- !u!1 &2071649553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 115324, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
-  m_PrefabInstance: {fileID: 2071649552}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2073567892
 GameObject:
   m_ObjectHideFlags: 0
@@ -17617,7 +17612,6 @@ MonoBehaviour:
   successText: {fileID: 874576885}
   failText: {fileID: 12453773}
   correctCode: 478354
-  door: {fileID: 2071649553}
 --- !u!1001 &4538107589524511181
 PrefabInstance:
   m_ObjectHideFlags: 0
