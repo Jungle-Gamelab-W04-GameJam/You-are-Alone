@@ -186,6 +186,14 @@ public class RayInteract : MonoBehaviour
             holdingRb.useGravity = false;
         }
 
+        // Ignore collision between the player and the held object
+        Collider playerCollider = GetComponent<Collider>();
+        if (playerCollider != null && holdingCollider != null)
+        {
+            Physics.IgnoreCollision(playerCollider, holdingCollider, true);
+        }
+
+
         Debug.Log("Picked up: " + holdingProp.name);
     }
 
@@ -198,6 +206,13 @@ public class RayInteract : MonoBehaviour
             {
                 holdingRb.useGravity = true;
                 holdingRb.velocity = Vector3.zero; // Reset velocity before dropping
+            }
+
+            // Re-enable collision between the player and the held object
+            Collider playerCollider = GetComponent<Collider>();
+            if (playerCollider != null && holdingCollider != null)
+            {
+                Physics.IgnoreCollision(playerCollider, holdingCollider, false);
             }
 
             holdingRb.constraints = RigidbodyConstraints.None;
@@ -223,6 +238,13 @@ public class RayInteract : MonoBehaviour
             holdingRb.useGravity = true;
 
             Debug.Log("Threw the object.");
+        }
+
+        // Re-enable collision between the player and the held object
+        Collider playerCollider = GetComponent<Collider>();
+        if (playerCollider != null && holdingCollider != null)
+        {
+            Physics.IgnoreCollision(playerCollider, holdingCollider, false);
         }
 
         holdingRb.constraints = RigidbodyConstraints.None;
