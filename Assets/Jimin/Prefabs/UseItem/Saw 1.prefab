@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6148932087540017950}
   - component: {fileID: 8264547793750859732}
   - component: {fileID: 6659242713164446068}
+  - component: {fileID: 8491027714065771792}
   m_Layer: 6
   m_Name: Saw 1
   m_TagString: Untagged
@@ -111,3 +112,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8491027714065771792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615989521689984513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6370169, y: 0.18270767, z: 0.026668023}
+  m_Center: {x: -0.051378235, y: 0.086199164, z: -0.000000008381903}
