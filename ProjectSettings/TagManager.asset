@@ -13,6 +13,10 @@ TagManager:
   - Key
   - Spyglass
   - Camcorder
+  - Interactable
+  - Lever
+  - Button
+  - Knife
   layers:
   - Default
   - TransparentFX

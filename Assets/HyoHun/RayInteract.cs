@@ -54,7 +54,7 @@ public class RayInteract : MonoBehaviour
             _input.throwInput = false; // Reset throw input state after input is processed
         }
 
-        if(_input.use)
+        if (_input.use)
         {
             UseItem();
             _input.use = false;
@@ -90,15 +90,38 @@ public class RayInteract : MonoBehaviour
                 {
                     HoldProp(rootObject);
                 }
-                else if (hitTarget.tag == "Interactable")
-                {
-                    Debug.Log("Interacting");
 
-                    // Call internal method of the hitTarget
+                switch (rootObject.tag)
+                {
+                    case "Lever":
+                        LeverController lever = rootObject.GetComponent<LeverController>();
+                        if (lever != null)
+                        {
+                            lever.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in Lever!");
+                        }
+                        break;
+                    case "Button":
+                        ButtonController button = rootObject.GetComponent<ButtonController>();
+                        if (button != null)
+                        {
+                            button.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in Button!");
+                        }
+                        break;
+                    default:
+                        Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
+                        break;
                 }
             }
         }
-        else if(!isZoomIn)
+        else if (!isZoomIn)
         {
             // Drop the held object
             DropProp();
@@ -150,7 +173,7 @@ public class RayInteract : MonoBehaviour
 
     private void ThrowProp()
     {
-        if (holdingProp == null){return;}
+        if (holdingProp == null) { return; }
 
         if (holdingRb != null)
         {
@@ -172,10 +195,10 @@ public class RayInteract : MonoBehaviour
 
     private void UseItem()
     {
-        Debug.Log("Use Item È£Ãâ");
+        Debug.Log("Use Item È£ï¿½ï¿½");
         if (holdingProp == null) { return; }
 
-        // ¾ÆÀÌÅÛÀ» µé°í ÀÖÀ» ¶§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         switch (holdingProp.tag)
         {
             case "Spyglass":
@@ -184,7 +207,7 @@ public class RayInteract : MonoBehaviour
             case "Camcorder":
                 HandleCamcorder();
                 break;
-            // ´Ù¸¥ ÅÂ±×¸¦ Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+            // ï¿½Ù¸ï¿½ ï¿½Â±×¸ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
             default:
                 Debug.Log("Unhandled item tag: " + holdingProp.tag);
                 break;
