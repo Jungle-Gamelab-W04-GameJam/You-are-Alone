@@ -15,6 +15,7 @@ namespace StarterAssets
 		public bool interact;
 		public bool throwInput;
 		public bool use;
+		public bool crouch;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -62,6 +63,11 @@ namespace StarterAssets
 		{
 			UseInput(context.performed);
 		}
+
+		public void OnCrouch(InputAction.CallbackContext context)
+		{
+			CrouchInput(context.performed);
+		}
 #endif
 
 
@@ -99,6 +105,11 @@ namespace StarterAssets
 		public void UseInput(bool newUseState)
 		{
 		use = newUseState; 
+		}
+
+		public void CrouchInput(bool newCrouchState)
+		{
+			crouch = newCrouchState;
 		}
 		
 
