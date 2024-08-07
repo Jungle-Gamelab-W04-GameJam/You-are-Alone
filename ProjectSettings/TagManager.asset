@@ -13,6 +13,9 @@ TagManager:
   - Key
   - Spyglass
   - Camcorder
+  - Interactable
+  - Lever
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -90,11 +90,33 @@ public class RayInteract : MonoBehaviour
                 {
                     HoldProp(rootObject);
                 }
-                else if (hitTarget.tag == "Interactable")
-                {
-                    Debug.Log("Interacting");
 
-                    // Call internal method of the hitTarget
+                switch (rootObject.tag)
+                {
+                    case "Lever":
+                        LeverController lever = rootObject.GetComponent<LeverController>();
+                        if(lever != null)
+                        {
+                            lever.Use();
+                        } else
+                        {
+                            Debug.LogError("No Scripts in Lever!");
+                        }
+                        break;
+                    case "Button":
+                        ButtonController button = rootObject.GetComponent<ButtonController>();
+                        if (button != null)
+                        {
+                            button.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in Button!");
+                        }
+                        break;
+                    default:
+                        Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
+                        break;
                 }
             }
         }
