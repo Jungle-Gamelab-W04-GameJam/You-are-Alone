@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,7 +48,7 @@ public class RayInteract : MonoBehaviour
             _input.interact = false; // Reset interact state after input is processed
         }
 
-        if (_input.throwInput)
+        if (_input.throwInput && !isZoomIn)
         {
             ThrowProp();
             _input.throwInput = false; // Reset throw input state after input is processed
@@ -66,6 +67,7 @@ public class RayInteract : MonoBehaviour
         if (holdingProp != null)
         {
             MoveHoldingProp();
+            UpdateHoldingPropRotation();
         }
     }
 
@@ -96,7 +98,7 @@ public class RayInteract : MonoBehaviour
                 }
             }
         }
-        else
+        else if(!isZoomIn)
         {
             // Drop the held object
             DropProp();
@@ -115,6 +117,7 @@ public class RayInteract : MonoBehaviour
         holdingRb = holdingProp.GetComponent<Rigidbody>();
         holdingCollider = holdingProp.GetComponent<Collider>();
 
+        //holdingProp.transform.rotation = Quaternion.identity;
         holdingRb.constraints = RigidbodyConstraints.FreezeRotation;
 
         // Disable gravity while holding
@@ -172,25 +175,43 @@ public class RayInteract : MonoBehaviour
         Debug.Log("Use Item 호출");
         if (holdingProp == null) { return; }
 
-        if(holdingProp != null)
+        // 아이템을 들고 있을 때
+        switch (holdingProp.tag)
         {
-            if(holdingProp.tag == "Spyglass")
-            {
-                Spyglass spyGlass = holdingProp.GetComponent<Spyglass>();
-
-                if (!isZoomIn)
-                {
-                    spyGlass.ZoomIn();
-                    isZoomIn = !isZoomIn;
-                } else
-                {
-                    spyGlass.ZoomOut();
-                    isZoomIn = !isZoomIn;
-                }
-            }
+            case "Spyglass":
+                HandleSpyglass();
+                break;
+            case "Camcorder":
+                HandleCamcorder();
+                break;
+            // 다른 태그를 추가할 수 있습니다.
+            default:
+                Debug.Log("Unhandled item tag: " + holdingProp.tag);
+                break;
         }
     }
 
+    private void HandleSpyglass()
+    {
+        Spyglass spyGlass = holdingProp.GetComponent<Spyglass>();
+
+        if (isZoomIn == false)
+        {
+            spyGlass.ZoomIn();
+            isZoomIn = !isZoomIn;
+        }
+        else
+        {
+            spyGlass.ZoomOut();
+            isZoomIn = !isZoomIn;
+        }
+    }
+
+    private void HandleCamcorder()
+    {
+        CamcorderInteraction camcorder = holdingProp.GetComponent<CamcorderInteraction>();
+        camcorder.InteractWithCamcorder();
+    }
 
 
     private void MoveHoldingProp()
@@ -206,5 +227,17 @@ public class RayInteract : MonoBehaviour
         }
 
         holdingRb.MovePosition(desiredPosition);
+    }
+    private void UpdateHoldingPropRotation()
+    {
+        // Get the player's forward direction
+        Vector3 playerForward = playerCam.transform.forward;
+        // Ignore the y component to keep the object level with the ground
+        playerForward.y = 0;
+        if (playerForward != Vector3.zero)
+        {
+            // Set the object's rotation to face the same direction as the player
+            holdingProp.transform.rotation = Quaternion.LookRotation(playerForward);
+        }
     }
 }
