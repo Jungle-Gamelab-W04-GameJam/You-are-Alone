@@ -32,4 +32,20 @@ public class Stage1_WeightPlatform_Controller : MonoBehaviour
             doorController.CloseDoor();
         }
     }
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Landing");
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || collision.gameObject.CompareTag("Player"))
+        {
+            doorController.OpenDoor();
+        }
+    }
+    private void OnTriggerExit(Collider collision)
+    {
+        Debug.Log("Landing");
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || collision.gameObject.CompareTag("Player"))
+        {
+            doorController.OpenDoor();
+        }
+    }
 }
