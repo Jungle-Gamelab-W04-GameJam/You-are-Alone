@@ -913,15 +913,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.971485
+      value: 21.959
       objectReference: {fileID: 0}
     - target: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02850988
+      value: 0.051974215
       objectReference: {fileID: 0}
     - target: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0000008940697
+      value: 0.17078477
       objectReference: {fileID: 0}
     - target: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4089,6 +4089,10 @@ PrefabInstance:
     - target: {fileID: 873579547937267666, guid: 1d1e8198c88796340b6271205042fd3b, type: 3}
       propertyPath: m_Name
       value: Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604301263362465194, guid: 1d1e8198c88796340b6271205042fd3b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28703088
       objectReference: {fileID: 0}
     - target: {fileID: 3604301263362465194, guid: 1d1e8198c88796340b6271205042fd3b, type: 3}
       propertyPath: m_LocalScale.z
@@ -7561,6 +7565,14 @@ PrefabInstance:
     - target: {fileID: 1208550769578517226, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+      propertyPath: distance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+      propertyPath: pickUpOffset
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 6501121024672532304, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11753,6 +11765,10 @@ PrefabInstance:
     - target: {fileID: 873579547937267666, guid: 1d1e8198c88796340b6271205042fd3b, type: 3}
       propertyPath: m_Name
       value: Window (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604301263362465194, guid: 1d1e8198c88796340b6271205042fd3b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28703088
       objectReference: {fileID: 0}
     - target: {fileID: 3604301263362465194, guid: 1d1e8198c88796340b6271205042fd3b, type: 3}
       propertyPath: m_LocalScale.z
