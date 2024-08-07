@@ -3,7 +3,7 @@ using UnityEngine;
 public class BrokenFloor : MonoBehaviour
 {
     public float tiltAngle = -5.0f; // Amount to tilt each time
-    public int maxCollisions = 4; // Number of collisions to fully break the floor
+    public int maxCollisions = 3; // Number of collisions to fully break the floor
     private int collisionCount = 0; // Current number of collisions
     private Rigidbody floorRigidbody; // The Rigidbody component of the floor
     private bool isColliding = false; // Track if currently colliding
@@ -25,8 +25,8 @@ public class BrokenFloor : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the object is in the "Prop" layer and if not already colliding
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") && !isColliding)
+        // Check if the object has the tag "Ball" and if not already colliding
+        if (collision.gameObject.CompareTag("Ball") && !isColliding)
         {
             isColliding = true; // Set collision flag
             collisionCount++;
@@ -44,7 +44,13 @@ public class BrokenFloor : MonoBehaviour
             }
             else if (collisionCount == maxCollisions)
             {
-                // Fully unlock all position and rotation constraints on the third collision
+                // Destroy the child object before enabling gravity
+
+                Destroy(gameObject);
+
+
+
+                // Fully unlock all position and rotation constraints
                 floorRigidbody.constraints = RigidbodyConstraints.None;
                 Debug.Log("Floor is now fully broken and all constraints are removed.");
             }
@@ -53,8 +59,8 @@ public class BrokenFloor : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        // Reset collision flag when object leaves
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop"))
+        // Reset collision flag when the object leaves
+        if (collision.gameObject.CompareTag("Ball"))
         {
             isColliding = false;
         }
