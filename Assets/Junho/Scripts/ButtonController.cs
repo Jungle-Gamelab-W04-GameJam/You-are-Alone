@@ -11,7 +11,7 @@ public class ButtonController : MonoBehaviour
     public GameObject ButtonTrue;
     public GameObject Door;
 
-    private Stage7_Door1 doorController;
+    private Stage2_Door_Controller doorController;
     private Material TrueMaterial;
     private Material FalseMaterial;
 
@@ -25,7 +25,7 @@ public class ButtonController : MonoBehaviour
         FalseMaterial = ButtonFalse.transform.GetComponent<Renderer>().material;
         TrueMaterial.color = Color.green;
         FalseMaterial.color = Color.red;
-        doorController = Door.GetComponent<Stage7_Door1>();
+        doorController = Door.GetComponent<Stage2_Door_Controller>();
     }
 
     // Update is called once per frame
