@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 788582724940733707}
   - component: {fileID: 5709826033419927730}
   - component: {fileID: 7621403320328943478}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ButtonTrue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4592001816084563626}
   - component: {fileID: 8738921403965261058}
   - component: {fileID: 5773416510590463477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ButtonFalse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7745731486457995949}
   - component: {fileID: 723000821834833147}
   - component: {fileID: 9109008458599918191}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -289,3 +289,4 @@ MonoBehaviour:
   Switch: 0
   ButtonFalse: {fileID: 4676224463103039828}
   ButtonTrue: {fileID: 2894949852515455147}
+  Door: {fileID: 0}
