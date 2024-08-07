@@ -325,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 0}
   spyglassFOV: 1
+  childObject: {fileID: 6144559933970621070}
 --- !u!65 &7643679913746781452
 BoxCollider:
   m_ObjectHideFlags: 0
