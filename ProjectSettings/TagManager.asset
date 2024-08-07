@@ -18,6 +18,7 @@ TagManager:
   - Button
   - Knife
   - Ball
+  - LightButton
   layers:
   - Default
   - TransparentFX
