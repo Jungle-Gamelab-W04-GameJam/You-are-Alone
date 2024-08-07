@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonController : MonoBehaviour
+public class Stage7_ButtonController : MonoBehaviour
 {
     public float buttonTime = 2f;
 
@@ -11,7 +11,7 @@ public class ButtonController : MonoBehaviour
     public GameObject ButtonTrue;
     public GameObject Door;
 
-    private Stage2_Door_Controller doorController;
+    private Stage7_Door1 doorController;
     private Material TrueMaterial;
     private Material FalseMaterial;
 
@@ -25,7 +25,7 @@ public class ButtonController : MonoBehaviour
         FalseMaterial = ButtonFalse.transform.GetComponent<Renderer>().material;
         TrueMaterial.color = Color.green;
         FalseMaterial.color = Color.red;
-        doorController = Door.GetComponent<Stage2_Door_Controller>();
+        doorController = Door.GetComponent<Stage7_Door1>();
     }
 
     // Update is called once per frame
