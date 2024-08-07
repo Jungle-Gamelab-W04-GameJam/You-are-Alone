@@ -45,6 +45,10 @@ public class CamcorderInteraction : MonoBehaviour
         {
             // Activate the Camcorder
             camcorderCamera.enabled = true;
+            if (!monitorRenderer.enabled)
+            {
+                monitorRenderer.enabled = true;
+            }
             monitorRenderer.material.mainTexture = camcorderView;
             camcorderRenderer.material.mainTexture = camcorderView; // Also update the camcorder's display
             isActive = true;
