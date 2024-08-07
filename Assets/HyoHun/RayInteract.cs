@@ -113,9 +113,22 @@ public class RayInteract : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("No Scripts in Lever!");
+                            Debug.LogError("No Scripts in JMLever!");
                         }
                         break;
+
+                    case "KeyPad":
+                        KeypadManager keyPad = rootObject.GetComponent<KeypadManager>();
+                        if (keyPad != null)
+                        {
+                            keyPad.ShowKeypad();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in KeyPad!");
+                        }
+                        break;
+
                     case "Button":
                         ButtonController button = rootObject.GetComponent<ButtonController>();
                         if (button != null)
@@ -130,8 +143,8 @@ public class RayInteract : MonoBehaviour
 
                     case "LightButton":
                         LightButton lightButton = rootObject.GetComponent<LightButton>();
-                        if(lightButton != null)
-                        {   
+                        if (lightButton != null)
+                        {
                             lightButton.Use();
                         }
                         break;
