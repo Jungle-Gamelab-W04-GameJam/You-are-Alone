@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +31,8 @@ public class RayInteract : MonoBehaviour
     private Rigidbody holdingRb;
     private Collider holdingCollider;
 
+    public bool isZoomIn = false;
+
     private void Start()
     {
         // Assign the main camera for raycasting
@@ -45,11 +48,18 @@ public class RayInteract : MonoBehaviour
             _input.interact = false; // Reset interact state after input is processed
         }
 
-        if (_input.throwInput)
+        if (_input.throwInput && !isZoomIn)
         {
             ThrowProp();
             _input.throwInput = false; // Reset throw input state after input is processed
         }
+
+        if(_input.use)
+        {
+            UseItem();
+            _input.use = false;
+        }
+
     }
 
     private void FixedUpdate()
@@ -57,6 +67,7 @@ public class RayInteract : MonoBehaviour
         if (holdingProp != null)
         {
             MoveHoldingProp();
+            UpdateHoldingPropRotation();
         }
     }
 
@@ -73,38 +84,40 @@ public class RayInteract : MonoBehaviour
             {
                 // Store the hit game object in hitTarget
                 GameObject hitTarget = hit.collider.gameObject;
+                GameObject rootObject = hitTarget.transform.root.gameObject;
 
                 if (hitTarget.layer == LayerMask.NameToLayer("Prop")) // Check if it has the tag that allows picking up
                 {
-                    HoldProp(hitTarget.gameObject);
+                    HoldProp(rootObject);
                 }
                 else if (hitTarget.tag == "Interactable")
                 {
                     Debug.Log("Interacting");
+
                     // Call internal method of the hitTarget
                 }
             }
         }
-        else
+        else if(!isZoomIn)
         {
             // Drop the held object
             DropProp();
         }
     }
 
-    private void HoldProp(GameObject hitTarget)
+    private void HoldProp(GameObject rootObject)
     {
         // Store the position of the collision object in moveTarget
-        moveTarget = hitTarget.transform;
+        moveTarget = rootObject.transform;
         // Store the distance to the object in targetDistance
         targetDistance = pickUpOffset;
 
         // Assign the object being held
-        holdingProp = hitTarget;
+        holdingProp = rootObject;
         holdingRb = holdingProp.GetComponent<Rigidbody>();
         holdingCollider = holdingProp.GetComponent<Collider>();
 
-        //add
+        //holdingProp.transform.rotation = Quaternion.identity;
         holdingRb.constraints = RigidbodyConstraints.FreezeRotation;
 
         // Disable gravity while holding
@@ -137,10 +150,7 @@ public class RayInteract : MonoBehaviour
 
     private void ThrowProp()
     {
-        if (holdingProp == null)
-        {
-            return;
-        }
+        if (holdingProp == null){return;}
 
         if (holdingRb != null)
         {
@@ -160,6 +170,50 @@ public class RayInteract : MonoBehaviour
         moveTarget = null;
     }
 
+    private void UseItem()
+    {
+        Debug.Log("Use Item 호출");
+        if (holdingProp == null) { return; }
+
+        // 아이템을 들고 있을 때
+        switch (holdingProp.tag)
+        {
+            case "Spyglass":
+                HandleSpyglass();
+                break;
+            case "Camcorder":
+                HandleCamcorder();
+                break;
+            // 다른 태그를 추가할 수 있습니다.
+            default:
+                Debug.Log("Unhandled item tag: " + holdingProp.tag);
+                break;
+        }
+    }
+
+    private void HandleSpyglass()
+    {
+        Spyglass spyGlass = holdingProp.GetComponent<Spyglass>();
+
+        if (isZoomIn == false)
+        {
+            spyGlass.ZoomIn();
+            isZoomIn = !isZoomIn;
+        }
+        else
+        {
+            spyGlass.ZoomOut();
+            isZoomIn = !isZoomIn;
+        }
+    }
+
+    private void HandleCamcorder()
+    {
+        CamcorderInteraction camcorder = holdingProp.GetComponent<CamcorderInteraction>();
+        camcorder.InteractWithCamcorder();
+    }
+
+
     private void MoveHoldingProp()
     {
         Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
@@ -173,5 +227,17 @@ public class RayInteract : MonoBehaviour
         }
 
         holdingRb.MovePosition(desiredPosition);
+    }
+    private void UpdateHoldingPropRotation()
+    {
+        // Get the player's forward direction
+        Vector3 playerForward = playerCam.transform.forward;
+        // Ignore the y component to keep the object level with the ground
+        playerForward.y = 0;
+        if (playerForward != Vector3.zero)
+        {
+            // Set the object's rotation to face the same direction as the player
+            holdingProp.transform.rotation = Quaternion.LookRotation(playerForward);
+        }
     }
 }
