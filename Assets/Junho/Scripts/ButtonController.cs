@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
+    public float buttonTime = 3f;
 
     public bool Switch;
     public GameObject ButtonFalse;
@@ -56,7 +57,7 @@ public class ButtonController : MonoBehaviour
     private IEnumerator SwitchOnCoroutine()
     {
         Switch = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(buttonTime);
         Switch = false;
     }
 

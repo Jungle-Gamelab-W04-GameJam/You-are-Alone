@@ -6,19 +6,24 @@ using UnityEngine.UI;
 
 public class NoticeManager : MonoBehaviour
 {
+    AudioSource audioSource;
+
     [SerializeField] private GameObject noticeCanvas;
     [SerializeField] private Image noticePanel;
     [SerializeField] private TextMeshProUGUI noticeText;
     [SerializeField] private List<string> noticeMessages;
 
     [Header("띄우기 시간 관련")]
+    [SerializeField] private float startDelay = 1.5f;
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private float showingDuration = 2f;
+    [SerializeField] private float showingDuration = 3f;
 
     public bool isShowingNotice;
 
     private void Awake()
     { 
+        audioSource = GetComponent<AudioSource>();
+
         if(noticeCanvas != null) { 
         noticeCanvas.SetActive(false);
         }
@@ -36,7 +41,10 @@ public class NoticeManager : MonoBehaviour
 
     private IEnumerator DisplayNotices()
     {
+        yield return new WaitForSeconds(startDelay);
         isShowingNotice = true;
+
+        audioSource.Play();
 
         foreach (var message in noticeMessages)
         {
