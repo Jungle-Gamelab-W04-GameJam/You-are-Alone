@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class JiminLeverController : MonoBehaviour
 {
-
     public bool Switch;
     public GameObject LeverDown;
     public GameObject LeverUp;
     public GameObject Cube;
     public GameObject Door1;
     public GameObject Door2;
+    public AudioClip openSound;  // Audio clip for opening sound
+    public AudioSource audioSource; // Reference to the AudioSource component
+
     private Jimin_Door_Controller door_Controller1;
     private Jimin_Door_Controller door_Controller2;
-
     private Material cubeMaterial;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         LeverDown.SetActive(false);
@@ -25,9 +24,16 @@ public class JiminLeverController : MonoBehaviour
         cubeMaterial = Cube.transform.GetComponent<Renderer>().material;
         door_Controller1 = Door1.GetComponent<Jimin_Door_Controller>();
         door_Controller2 = Door2.GetComponent<Jimin_Door_Controller>();
+
+        // Get the AudioSource component attached to the lever
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing from the lever object.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Switch)
@@ -36,6 +42,8 @@ public class JiminLeverController : MonoBehaviour
             LeverUp.SetActive(false);
             door_Controller1.OpenDoor();
             door_Controller2.OpenDoor();
+
+
 
             cubeMaterial.color = Color.green;
         }
@@ -48,11 +56,16 @@ public class JiminLeverController : MonoBehaviour
 
             cubeMaterial.color = Color.red;
         }
-
     }
 
     public void Use()
     {
         Switch = !Switch;
+        if (audioSource != null && openSound != null)
+        {
+            audioSource.PlayOneShot(openSound);
+        }
     }
+
+
 }

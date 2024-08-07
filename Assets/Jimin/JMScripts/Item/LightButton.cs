@@ -46,7 +46,7 @@ public class LightButton : MonoBehaviour
     {
         Switch = true;
         lightManager.OnButtonPress(); // 전구 패턴 재생
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         Switch = false;
     }
 
