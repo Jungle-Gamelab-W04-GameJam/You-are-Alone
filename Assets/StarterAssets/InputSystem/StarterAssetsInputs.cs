@@ -24,6 +24,7 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+		public bool cursorUITrigger = false;
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputAction.CallbackContext context)
@@ -131,7 +132,17 @@ namespace StarterAssets
 
 		private void SetCursorState(bool newState)
 		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			if (Time.timeScale == 0f)
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+			else
+			{
+				Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			}
+
+
 		}
 	}
 
