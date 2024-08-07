@@ -117,7 +117,11 @@ public class RayInteract : MonoBehaviour
                         break;
 
                     case "LightButton":
-                        //라이트 버튼 컴포넌트 받아서 Use 호출
+                        LightButton lightButton = rootObject.GetComponent<LightButton>();
+                        if(lightButton != null)
+                        {   
+                            lightButton.Use();
+                        }
                         break;
                     default:
                         Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
