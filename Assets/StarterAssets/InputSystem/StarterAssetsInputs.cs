@@ -48,7 +48,7 @@ namespace StarterAssets
 		public void OnSprint(InputAction.CallbackContext context)
 		{
 			SprintInput(context.performed);
-        }
+		}
 
 		public void OnInteract(InputAction.CallbackContext context)
 		{
@@ -110,7 +110,7 @@ namespace StarterAssets
 
 		public void UseInput(bool newUseState)
 		{
-		use = newUseState; 
+			use = newUseState;
 		}
 
 		public void CrouchInput(bool newCrouchState)
@@ -120,9 +120,9 @@ namespace StarterAssets
 
 		public void RestartInput(bool newRestartState)
 		{
-			restart = newRestartState;	
+			restart = newRestartState;
 		}
-		
+
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
