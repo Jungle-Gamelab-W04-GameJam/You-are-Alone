@@ -18,7 +18,7 @@ public class Stage1_WeightPlatform_Controller : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (IsTriggerValid(collision))
         {
