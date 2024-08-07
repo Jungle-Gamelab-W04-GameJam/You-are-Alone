@@ -9,6 +9,7 @@ public class CamcorderInteraction : MonoBehaviour
     private bool isActive = false; // Tracks if the Camcorder is active
 
     private Rigidbody camcorderRigidbody; // Rigidbody component of the Camcorder
+    private bool gravityEnabled = false; // Tracks if gravity has been enabled once
 
     void Start()
     {
@@ -62,10 +63,12 @@ public class CamcorderInteraction : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // When a collision occurs, set Use Gravity to true
-        if (camcorderRigidbody != null)
+        // When a collision occurs, set Use Gravity to true only once
+        if (camcorderRigidbody != null && !gravityEnabled)
         {
             camcorderRigidbody.useGravity = true;
+            gravityEnabled = true; // Set flag to indicate gravity has been enabled
+            Debug.Log("Gravity enabled for the first time on collision with " + collision.gameObject.name);
         }
     }
 }
