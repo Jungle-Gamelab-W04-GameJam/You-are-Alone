@@ -137,7 +137,11 @@ public class RayInteract : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("No Scripts in Button!");
+                            Stage7_ButtonController button7 = rootObject.GetComponent<Stage7_ButtonController>();
+                            if(button7 != null)
+                            {
+                                button7.Use();
+                            }
                         }
                         break;
 

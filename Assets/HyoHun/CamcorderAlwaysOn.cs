@@ -34,9 +34,11 @@ public class CamcorderAlwaysOn : MonoBehaviour
             return;
         }
 
-        monitorRenderer.material.mainTexture = camcorderView;
-        camcorderRenderer.material.mainTexture = camcorderView; // Also update the camcorder's display
         camcorderCamera.enabled = true;
+
+        //monitorRenderer.material.mainTexture = camcorderView;
+        //camcorderRenderer.material.mainTexture = camcorderView; // Also update the camcorder's display
+
         isActive = true;
 
     }
@@ -70,17 +72,6 @@ public class CamcorderAlwaysOn : MonoBehaviour
             camcorderRenderer.material.mainTexture = null; // Also clear the camcorder's display
             isActive = false;
             Debug.Log("Camcorder is now inactive.");
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // When a collision occurs, set Use Gravity to true only once
-        if (camcorderRigidbody != null && !gravityEnabled)
-        {
-            camcorderRigidbody.useGravity = true;
-            gravityEnabled = true; // Set flag to indicate gravity has been enabled
-            Debug.Log("Gravity enabled for the first time on collision with " + collision.gameObject.name);
         }
     }
 }
