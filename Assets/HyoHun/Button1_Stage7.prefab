@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5642658859886191035}
   - component: {fileID: 1232096360110753657}
   - component: {fileID: 2990435721038455299}
-  - component: {fileID: 7433205696970527073}
   - component: {fileID: 9130451739389736532}
+  - component: {fileID: 8351431738427756409}
   m_Layer: 7
   m_Name: Button1_Stage7
   m_TagString: Button
@@ -109,23 +109,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7433205696970527073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3636970579376936482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24e148d5685d5ad469446dbaa32e7a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonTime: 2
-  Switch: 0
-  ButtonFalse: {fileID: 8271670362374519551}
-  ButtonTrue: {fileID: 3937443883709047650}
-  Door: {fileID: 0}
 --- !u!65 &9130451739389736532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,6 +130,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2368433, y: 1.3806812, z: 2.2883804}
   m_Center: {x: -0.020404885, y: -0.02543315, z: -0.36371094}
+--- !u!114 &8351431738427756409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636970579376936482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16711e8379940104d90d87ef85e59a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonTime: 2
+  Switch: 0
+  ButtonFalse: {fileID: 8271670362374519551}
+  ButtonTrue: {fileID: 3937443883709047650}
+  Door: {fileID: 0}
 --- !u!1 &3937443883709047650
 GameObject:
   m_ObjectHideFlags: 0
