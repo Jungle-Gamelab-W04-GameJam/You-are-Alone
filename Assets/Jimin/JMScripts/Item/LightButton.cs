@@ -1,16 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LightButton : MonoBehaviour
 {
-
     public bool Switch;
     public GameObject ButtonFalse;
     public GameObject ButtonTrue;
     private Material TrueMaterial;
     private Material FalseMaterial;
-
+    public LightManager lightManager; // LightManager 스크립트 참조
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +32,11 @@ public class LightButton : MonoBehaviour
             ButtonTrue.SetActive(false);
             ButtonFalse.SetActive(true);
         }
-
-
     }
+
     public void Use()
     {
-        if (!Switch) // Play only when Switch is false.
+        if (!Switch) // Switch가 false일 때만 실행
         {
             StartCoroutine(SwitchOnCoroutine());
         }
@@ -48,16 +45,16 @@ public class LightButton : MonoBehaviour
     private IEnumerator SwitchOnCoroutine()
     {
         Switch = true;
+        lightManager.OnButtonPress(); // 전구 패턴 재생
         yield return new WaitForSeconds(3);
         Switch = false;
     }
 
-    private void OnCollisionEnter(Collision collision) // when it take some bugs, let's make it by triggerEnter.
+    private void OnCollisionEnter(Collision collision) // 충돌 시 작동
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop")) // change name by Object????
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop")) // 충돌한 오브젝트가 "Prop" 레이어인지 확인
         {
             Use();
         }
     }
-
 }
