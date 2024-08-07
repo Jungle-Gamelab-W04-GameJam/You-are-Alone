@@ -16,6 +16,7 @@ TagManager:
   - Interactable
   - Lever
   - Button
+  - Knife
   layers:
   - Default
   - TransparentFX
