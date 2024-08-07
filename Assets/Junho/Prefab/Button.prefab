@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 8167240387940831752}
   m_Layer: 7
   m_Name: Button
-  m_TagString: Interactable
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

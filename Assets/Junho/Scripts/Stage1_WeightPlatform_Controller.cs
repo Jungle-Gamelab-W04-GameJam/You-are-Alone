@@ -15,37 +15,31 @@ public class Stage1_WeightPlatform_Controller : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+
+
+
+    private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Landing");
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || collision.gameObject.CompareTag("Player"))
+        if (IsTriggerValid(collision))
         {
             doorController.OpenDoor();
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
-        Debug.Log("Leaving");
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || collision.gameObject.CompareTag("Player"))
+        if (IsTriggerValid(collision))
         {
             doorController.CloseDoor();
         }
     }
-    private void OnTriggerEnter(Collider collision)
+
+    private bool IsTriggerValid(Collider collision)
     {
-        Debug.Log("Landing");
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || (collision.gameObject.transform.parent != null && collision.gameObject.transform.parent.CompareTag("Player")))
         {
-            doorController.OpenDoor();
+            return true;
         }
-    }
-    private void OnTriggerExit(Collider collision)
-    {
-        Debug.Log("Landing");
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") || collision.gameObject.CompareTag("Player"))
-        {
-            doorController.OpenDoor();
-        }
+        return false;
     }
 }
