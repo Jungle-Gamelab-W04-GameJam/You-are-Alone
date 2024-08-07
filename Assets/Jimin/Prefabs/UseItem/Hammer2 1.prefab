@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3934146376665958412}
   m_Layer: 6
   m_Name: Hammer2 1
-  m_TagString: Untagged
+  m_TagString: Heavy Tool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
