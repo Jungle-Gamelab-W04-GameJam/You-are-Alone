@@ -13,7 +13,7 @@ public class NoticeManager : MonoBehaviour
 
     [Header("띄우기 시간 관련")]
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private float showingDuration = 2f;
+    [SerializeField] private float showingDuration = 3f;
 
     public bool isShowingNotice;
 
