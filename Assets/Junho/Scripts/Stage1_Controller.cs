@@ -32,7 +32,6 @@ public class Stage1_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Clear : " + Clear);
         if (door_Controller1.isOpen && door_Controller2.isOpen)
         {
             Clear = true;

@@ -47,7 +47,6 @@ public class Stage3_BallController : MonoBehaviour
         }
         if (clear)
         {
-            ballButtonController.Switch = true;
             clearButtonController.Switch = true;
         }
 
