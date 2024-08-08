@@ -70,13 +70,17 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+        private int propLayer;
+        private LayerMask originalGroundLayers;
+
 
 #if ENABLE_INPUT_SYSTEM
-		private PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+		private RayInteract rayInt;
 
 		private const float _threshold = 0.01f;
 
@@ -99,7 +103,13 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-		}
+
+            // 저장 원본 LayerMask
+            originalGroundLayers = GroundLayers;
+
+            // Get the layer index for "Prop"
+            propLayer = LayerMask.NameToLayer("Prop");
+        }
 
 		private void Start()
 		{
@@ -114,6 +124,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			rayInt = GetComponent<RayInteract>();
 		}
 
 		private void Update()
@@ -129,14 +140,25 @@ namespace StarterAssets
 			CrouchCameraPos();
 		}
 
-		private void GroundedCheck()
-		{
-			// set sphere position, with offset
-			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-		}
+        private void GroundedCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 
-		private void CameraRotation()
+            // Check if player is holding a prop
+            if (rayInt.holdingProp != null)
+            {
+                // Create a LayerMask that excludes the Prop layer
+                LayerMask groundCheckMask = originalGroundLayers & ~(1 << propLayer);
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, groundCheckMask, QueryTriggerInteraction.Ignore);
+            }
+            else
+            {
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, originalGroundLayers, QueryTriggerInteraction.Ignore);
+            }
+        }
+
+        private void CameraRotation()
 		{
 			if (Time.timeScale == 0f)
 			{

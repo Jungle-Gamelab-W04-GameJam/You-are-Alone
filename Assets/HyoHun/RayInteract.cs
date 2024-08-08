@@ -191,7 +191,7 @@ public class RayInteract : MonoBehaviour
         if (playerCollider != null && holdingCollider != null)
         {
             Physics.IgnoreCollision(playerCollider, holdingCollider, true);
-        }
+        } 
 
 
         Debug.Log("Picked up: " + holdingProp.name);
