@@ -13,11 +13,21 @@ public class LightManager : MonoBehaviour
     private List<LightColor> playerSequence; // 플레이어의 입력 순서
     public GameObject door; // 사라질 문 오브젝트
 
+    // 오디오 설정
+    public AudioClip successSound; // 성공 시 재생할 소리
+    public AudioClip failureSound; // 실패 시 재생할 소리
+    private AudioSource audioSource; // AudioSource 컴포넌트
     void Start()
     {
         // 전구 색상 목록 정의
         colors = new LightColor[] { LightColor.Red, LightColor.Green, LightColor.Blue, LightColor.Yellow, LightColor.Orange, LightColor.Purple };
         playerSequence = new List<LightColor>(); // 플레이어 입력 초기화
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // AudioSource 컴포넌트가 없으면 추가
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     // 버튼을 누르면 호출되는 메소드
@@ -94,6 +104,7 @@ public class LightManager : MonoBehaviour
             if (IsCorrectSequence())
             {
                 Debug.Log("정답입니다!");
+                audioSource.PlayOneShot(successSound);
                 if (door != null)
                 {
                     Destroy(door);
@@ -103,6 +114,8 @@ public class LightManager : MonoBehaviour
             else
             {
                 Debug.Log("틀렸습니다, 다시 시도하세요!");
+                audioSource.PlayOneShot(failureSound);
+
             }
             ResetSequence();
         }
