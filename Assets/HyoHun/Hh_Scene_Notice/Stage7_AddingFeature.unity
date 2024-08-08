@@ -9357,11 +9357,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4269320996691762577, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
       propertyPath: m_UpdateMethod
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4269320996691762577, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
       propertyPath: m_BlendUpdateMethod
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
