@@ -9,7 +9,7 @@ public class CamcorderAlwaysOn : MonoBehaviour
     private bool isActive = false; // Tracks if the Camcorder is active
 
     private Rigidbody camcorderRigidbody; // Rigidbody component of the Camcorder
-    private bool gravityEnabled = false; // Tracks if gravity has been enabled once
+    //private bool gravityEnabled = false; // Tracks if gravity has been enabled once
 
     void Start()
     {
