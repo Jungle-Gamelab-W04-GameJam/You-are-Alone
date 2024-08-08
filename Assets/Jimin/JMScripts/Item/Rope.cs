@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
+    public FloorButton floorButton;
+
     private void OnTriggerEnter(Collider other)
     {
         // Check if the object that entered the trigger has the tag "Knife"
@@ -11,6 +13,7 @@ public class Rope : MonoBehaviour
             NotifyParent();
 
             // Destroy the Rope object
+            floorButton.moveFloor = null;
             Destroy(gameObject);
             Debug.Log("Rope has been cut by a knife and destroyed.");
         }
@@ -39,4 +42,5 @@ public class Rope : MonoBehaviour
             }
         }
     }
+
 }

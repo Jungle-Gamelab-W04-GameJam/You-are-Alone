@@ -73,6 +73,8 @@ namespace StarterAssets
         private int propLayer;
         private LayerMask originalGroundLayers;
 
+		private int originalLayer;
+
 
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
@@ -139,7 +141,33 @@ namespace StarterAssets
 			CameraRotation();
 			CrouchCameraPos();
 		}
+        private void GroundedCheck()
+        {
+            // Set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 
+            // Check if player is holding a prop
+            if (rayInt.holdingProp != null)
+            {
+                // Store the original layer of the holding prop
+                originalLayer = rayInt.holdingProp.layer;
+
+                // Temporarily change the layer of the holding prop to ignore ground check
+                rayInt.holdingProp.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+                // Perform the ground check
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+
+                // Restore the original layer of the holding prop
+                rayInt.holdingProp.layer = originalLayer;
+            }
+            else
+            {
+                // Perform the ground check
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+            }
+        }
+        /*
         private void GroundedCheck()
         {
             // set sphere position, with offset
@@ -156,7 +184,9 @@ namespace StarterAssets
             {
                 Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, originalGroundLayers, QueryTriggerInteraction.Ignore);
             }
+
         }
+		*/
 
         private void CameraRotation()
 		{
