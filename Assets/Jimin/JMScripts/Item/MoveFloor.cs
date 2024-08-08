@@ -6,7 +6,7 @@ public class MoveFloor : MonoBehaviour
     public float moveSpeed = 2.0f; // The speed at which the platform moves
     private Vector3 originalPosition; // The original position of the platform
     private Rigidbody floorRigidbody; // The Rigidbody component of the platform
-    private bool isSteppedOn = false; // Indicates whether the platform is being stepped on
+    public bool isSteppedOn = false; // Indicates whether the platform is being stepped on
 
     void Start()
     {
@@ -21,23 +21,24 @@ public class MoveFloor : MonoBehaviour
             Debug.LogError("MoveFloor object does not have a Rigidbody component.");
             return;
         }
+
+        // Initially freeze all position and rotation constraints
+        floorRigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     void Update()
     {
         if (isSteppedOn)
         {
-            // Move the platform down while it is being stepped on
             MoveDown();
         }
         else
         {
-            // Move the platform back up to its original position when not stepped on
             MoveUp();
         }
     }
 
-    private void MoveDown()
+    public void MoveDown()
     {
         // Unfreeze the Y position constraint to allow movement
         floorRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
@@ -56,7 +57,7 @@ public class MoveFloor : MonoBehaviour
         }
     }
 
-    private void MoveUp()
+    public void MoveUp()
     {
         // Unfreeze the Y position constraint to allow movement
         floorRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
