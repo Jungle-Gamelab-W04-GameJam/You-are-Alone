@@ -71,3 +71,5 @@ public class TextMeshPro3DTextTrigger : MonoBehaviour
         }
     }
 }
+
+//¹½..
