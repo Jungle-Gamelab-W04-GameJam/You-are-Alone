@@ -2886,7 +2886,7 @@ PrefabInstance:
     - target: {fileID: 4271241584663279585, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 9695e9cdb5beb8340b021b079e43a828, type: 3}
+      objectReference: {fileID: 8300000, guid: 607cb9c379c66914e96b29bffc213059, type: 3}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeText
       value: 
@@ -2901,7 +2901,8 @@ PrefabInstance:
       objectReference: {fileID: 21857157}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[0]
-      value: "\uB124 \uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uB294 \uC2E0\uB8B0\uB3C4 \uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4. "
+      value: "\uC5EC\uC12F \uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uB294 \uC2E0\uB8B0\uB3C4
+        \uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[1]
@@ -6714,7 +6715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6841276044968414760, guid: d1d54f1c2990a174a96300ed33cc507e, type: 3}
       propertyPath: m_text
-      value: Stage 7
+      value: Test 6
       objectReference: {fileID: 0}
     - target: {fileID: 7640998432065267711, guid: d1d54f1c2990a174a96300ed33cc507e, type: 3}
       propertyPath: m_Name
