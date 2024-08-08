@@ -26,7 +26,7 @@ public class BrokenFloor : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the object has the tag "Ball" and if not already colliding
-        if (collision.gameObject.CompareTag("Ball") && !isColliding)
+        if ((collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("Prop")) && !isColliding)
         {
             isColliding = true; // Set collision flag
             collisionCount++;
@@ -60,7 +60,7 @@ public class BrokenFloor : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         // Reset collision flag when the object leaves
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("Prop"))
         {
             isColliding = false;
         }
