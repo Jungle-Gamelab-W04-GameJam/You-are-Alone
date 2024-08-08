@@ -15981,7 +15981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a37158b731ce3e45877220b5412e304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Stage8
+  nextSceneName: End
 --- !u!1001 &4015923654722246371
 PrefabInstance:
   m_ObjectHideFlags: 0
