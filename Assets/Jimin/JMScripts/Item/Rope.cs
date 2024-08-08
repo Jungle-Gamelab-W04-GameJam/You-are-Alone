@@ -18,20 +18,24 @@ public class Rope : MonoBehaviour
 
     private void NotifyParent()
     {
-        // Get the parent object's Rigidbody and modify its constraints
+        // Get the parent object's MoveFloor component and trigger MoveDown
         Transform parentTransform = transform.parent;
         if (parentTransform != null)
         {
-            Rigidbody parentRigidbody = parentTransform.GetComponent<Rigidbody>();
-            if (parentRigidbody != null)
+            MoveFloor moveFloor = parentTransform.GetComponent<MoveFloor>();
+            if (moveFloor != null)
             {
-                // Enable gravity
-                parentRigidbody.useGravity = true;
+                // Directly set isSteppedOn to true to simulate stepping on
+                moveFloor.SetSteppedOn(true);
 
-                // Remove Y-axis position freeze
-                parentRigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+                // Optionally, directly call MoveDown() if needed
+                // moveFloor.MoveDown();
 
-                Debug.Log("Gravity enabled and Y position freeze removed for the parent object: " + parentTransform.name);
+                Debug.Log("Parent notified to move down: " + parentTransform.name);
+            }
+            else
+            {
+                Debug.LogError("No MoveFloor component found on parent.");
             }
         }
     }
