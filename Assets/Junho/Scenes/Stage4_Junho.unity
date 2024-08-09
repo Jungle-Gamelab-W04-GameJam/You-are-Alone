@@ -922,7 +922,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93a9366137f070544bb0e68388c80e91, type: 2}
+  - {fileID: 2100000, guid: 4ee0660f69c9872428fcda567a2cc3f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2532,7 +2532,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ee0660f69c9872428fcda567a2cc3f8, type: 2}
+  - {fileID: 2100000, guid: 93a9366137f070544bb0e68388c80e91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3272,6 +3272,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 421505374889392309, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
+      propertyPath: field of view
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 2776576021787081014, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.506
@@ -9023,7 +9027,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ee0660f69c9872428fcda567a2cc3f8, type: 2}
+  - {fileID: 2100000, guid: 93a9366137f070544bb0e68388c80e91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12891,7 +12895,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ee0660f69c9872428fcda567a2cc3f8, type: 2}
+  - {fileID: 2100000, guid: 93a9366137f070544bb0e68388c80e91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13179,7 +13183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904252659628301966, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.998
+      value: 39.997
       objectReference: {fileID: 0}
     - target: {fileID: 5904252659628301966, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13187,7 +13191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904252659628301966, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.153
+      value: 10.15
       objectReference: {fileID: 0}
     - target: {fileID: 5904252659628301966, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13231,7 +13235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6313148523077726444, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6313148523077726444, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
       propertyPath: m_TagString
@@ -13350,7 +13354,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ee0660f69c9872428fcda567a2cc3f8, type: 2}
+  - {fileID: 2100000, guid: 93a9366137f070544bb0e68388c80e91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13535,7 +13539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2010635632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13577,7 +13581,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93a9366137f070544bb0e68388c80e91, type: 2}
+  - {fileID: 2100000, guid: 4ee0660f69c9872428fcda567a2cc3f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13616,7 +13620,7 @@ Transform:
   m_GameObject: {fileID: 2010635631}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.001, y: 1.9841627, z: 10.233}
+  m_LocalPosition: {x: 40, y: 1.9841627, z: 10.23}
   m_LocalScale: {x: 0.7673, y: 1, z: 0.033318423}
   m_ConstrainProportionsScale: 0
   m_Children:
