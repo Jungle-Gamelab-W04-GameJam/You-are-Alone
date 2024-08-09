@@ -11,6 +11,9 @@ public class Stage2_Door_Controller : MonoBehaviour
     private Quaternion initialRotation;
     private Quaternion targetRotation;
 
+    //make Door Stuck
+    public bool isStuck = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,7 @@ public class Stage2_Door_Controller : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * openSpeed);
         }
-        else
+        else if(!isStuck)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, initialRotation, Time.deltaTime * openSpeed);
         }
