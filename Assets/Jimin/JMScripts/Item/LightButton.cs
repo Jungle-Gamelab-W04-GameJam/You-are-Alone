@@ -8,7 +8,10 @@ public class LightButton : MonoBehaviour
     public GameObject ButtonTrue;
     private Material TrueMaterial;
     private Material FalseMaterial;
-    public LightManager lightManager; // LightManager 스크립트 참조
+    public LightManager lightManager; // Reference to the LightManager script
+
+    public AudioClip clickSound; // Audio clip for the button click sound
+    private AudioSource audioSource; // AudioSource component
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,13 @@ public class LightButton : MonoBehaviour
         ButtonFalse.SetActive(true);
         TrueMaterial = ButtonTrue.transform.GetComponent<Renderer>().material;
         FalseMaterial = ButtonFalse.transform.GetComponent<Renderer>().material;
+
+        // Get or add an AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
@@ -36,8 +46,10 @@ public class LightButton : MonoBehaviour
 
     public void Use()
     {
-        if (!Switch) // Switch가 false일 때만 실행
+        if (!Switch) // Only execute when Switch is false
         {
+            // Play the click sound
+            PlayClickSound();
             StartCoroutine(SwitchOnCoroutine());
         }
     }
@@ -45,14 +57,22 @@ public class LightButton : MonoBehaviour
     private IEnumerator SwitchOnCoroutine()
     {
         Switch = true;
-        lightManager.OnButtonPress(); // 전구 패턴 재생
-        yield return new WaitForSeconds(6);
+        lightManager.OnButtonPress(); // Play the light pattern
+        yield return new WaitForSeconds(9);
         Switch = false;
     }
 
-    private void OnCollisionEnter(Collision collision) // 충돌 시 작동
+    private void PlayClickSound()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop")) // 충돌한 오브젝트가 "Prop" 레이어인지 확인
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) // Trigger action on collision
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Prop")) // Check if the colliding object is in the "Prop" layer
         {
             Use();
         }
