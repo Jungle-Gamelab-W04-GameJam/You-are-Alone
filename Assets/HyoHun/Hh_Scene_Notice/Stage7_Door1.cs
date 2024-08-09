@@ -11,6 +11,9 @@ public class Stage7_Door1 : MonoBehaviour
     private Vector3 initialPosition;
     private Vector3 targetPosition;
 
+    //make Door Stuck
+    public bool isStuck = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,7 @@ public class Stage7_Door1 : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openSpeed);
         }
-        else
+        else if(!isStuck)
         {
             transform.position = Vector3.Lerp(transform.position, initialPosition, Time.deltaTime * openSpeed);
         }
