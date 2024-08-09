@@ -18409,6 +18409,10 @@ PrefabInstance:
       propertyPath: Door
       value: 
       objectReference: {fileID: 359449822}
+    - target: {fileID: 9109008458599918191, guid: 9c9d11a8a6c51214095f154e543e2b73, type: 3}
+      propertyPath: buttonTime
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

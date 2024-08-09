@@ -13,6 +13,7 @@ public class RayInteract : MonoBehaviour
     [SerializeField] float distance = 20f;
     // Layer to check for the ray
     public LayerMask whatIsTarget;
+    public LayerMask ignoreTrigger;
 
     // Position information to update when interacting with an object
     private Transform moveTarget;
@@ -294,15 +295,14 @@ public class RayInteract : MonoBehaviour
         CamcorderInteraction camcorder = holdingProp.GetComponent<CamcorderInteraction>();
         camcorder.InteractWithCamcorder();
     }
-
-
+    /*
     private void MoveHoldingProp()
     {
         Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
         Vector3 direction = desiredPosition - holdingRb.position;
         float distance = direction.magnitude;
 
-        if (Physics.Raycast(holdingRb.position, direction, out RaycastHit hit, distance))
+        if (Physics.Raycast(holdingRb.position, direction, out RaycastHit hit, distance, ignoreTrigger))
         {
             // Adjust position to avoid collision
             desiredPosition = hit.point - direction.normalized * holdingCollider.bounds.extents.magnitude;
@@ -310,6 +310,33 @@ public class RayInteract : MonoBehaviour
 
         holdingRb.MovePosition(desiredPosition);
     }
+    */
+    private void MoveHoldingProp()
+    {
+        Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+        Vector3 direction = desiredPosition - holdingRb.position;
+        float distance = direction.magnitude;
+
+        // 플레이어와 물체 사이의 거리를 계산
+        float currentDistanceFromPlayer = Vector3.Distance(playerCam.transform.position, holdingRb.position);
+
+        // 플레이어와 물체 사이의 거리가 지정된 거리보다 멀다면 DropProp() 호출
+        if (currentDistanceFromPlayer > pickUpOffset + 1f)
+        {
+            DropProp();
+            return; // 물체를 드랍했으므로 더 이상 위치를 업데이트할 필요가 없습니다.
+        }
+
+        if (Physics.Raycast(holdingRb.position, direction, out RaycastHit hit, distance, ignoreTrigger))
+        {
+            // 충돌을 피하기 위해 위치를 조정
+            desiredPosition = hit.point - direction.normalized * holdingCollider.bounds.extents.magnitude;
+        }
+
+        holdingRb.MovePosition(desiredPosition);
+    }
+
+
     private void UpdateHoldingPropRotation()
     {
         // Get the player's forward direction
@@ -319,7 +346,8 @@ public class RayInteract : MonoBehaviour
         if (playerForward != Vector3.zero)
         {
             // Set the object's rotation to face the same direction as the player
-            holdingProp.transform.rotation = Quaternion.LookRotation(playerForward);
+            if(holdingProp != null)
+                holdingProp.transform.rotation = Quaternion.LookRotation(playerForward);
         }
     }
 }

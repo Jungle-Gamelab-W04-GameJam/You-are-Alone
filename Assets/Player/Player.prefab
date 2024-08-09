@@ -139,6 +139,7 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+  cursorUITrigger: 0
 --- !u!114 &6593726936072213164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +330,9 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 192
+  ignoreTrigger:
+    serializedVersion: 2
+    m_Bits: 501
   holdingProp: {fileID: 0}
   pickUpOffset: 1.5
   throwForce: 10
@@ -345,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8177d57a0dd9540b2ff7eb401fcf23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneName: 
 --- !u!1 &3776147413833036734
 GameObject:
   m_ObjectHideFlags: 0
