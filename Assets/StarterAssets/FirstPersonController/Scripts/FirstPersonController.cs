@@ -15,7 +15,9 @@ namespace StarterAssets
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 6.0f;
+		public float SprintSpeed = 7.0f;
+		[Tooltip("Crouch speed of the character in m/s")]
+		public float CrouchSpeed = 2.5f;
 		[Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
@@ -50,6 +52,10 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+		[Tooltip("Original viewPos")]
+		public Vector3 originViewPos = new Vector3(0f, 1.375f, 0f);
+		[Tooltip("Crouch viewPos")]
+		public Vector3 crouchViewPos = new Vector3(0f, 0.7f, 0f);
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -64,13 +70,19 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+        private int propLayer;
+        private LayerMask originalGroundLayers;
+
+		private int originalLayer;
+
+
 #if ENABLE_INPUT_SYSTEM
-		private PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+		private RayInteract rayInt;
 
 		private const float _threshold = 0.01f;
 
@@ -78,11 +90,11 @@ namespace StarterAssets
 		{
 			get
 			{
-				#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM
 				return _playerInput.currentControlScheme == "KeyboardMouse";
-				#else
+#else
 				return false;
-				#endif
+#endif
 			}
 		}
 
@@ -93,7 +105,13 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-		}
+
+            // 저장 원본 LayerMask
+            originalGroundLayers = GroundLayers;
+
+            // Get the layer index for "Prop"
+            propLayer = LayerMask.NameToLayer("Prop");
+        }
 
 		private void Start()
 		{
@@ -108,6 +126,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			rayInt = GetComponent<RayInteract>();
 		}
 
 		private void Update()
@@ -120,43 +139,110 @@ namespace StarterAssets
 		private void LateUpdate()
 		{
 			CameraRotation();
+			CrouchCameraPos();
 		}
+        private void GroundedCheck()
+        {
+            // Set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 
-		private void GroundedCheck()
-		{
-			// set sphere position, with offset
-			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-		}
+            // Check if player is holding a prop
+            if (rayInt.holdingProp != null)
+            {
+                // Store the original layer of the holding prop
+                originalLayer = rayInt.holdingProp.layer;
 
-		private void CameraRotation()
+                // Temporarily change the layer of the holding prop to ignore ground check
+                rayInt.holdingProp.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+                // Perform the ground check
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+
+                // Restore the original layer of the holding prop
+                rayInt.holdingProp.layer = originalLayer;
+            }
+            else
+            {
+                // Perform the ground check
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+            }
+        }
+        /*
+        private void GroundedCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+
+            // Check if player is holding a prop
+            if (rayInt.holdingProp != null)
+            {
+                // Create a LayerMask that excludes the Prop layer
+                LayerMask groundCheckMask = originalGroundLayers & ~(1 << propLayer);
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, groundCheckMask, QueryTriggerInteraction.Ignore);
+            }
+            else
+            {
+                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, originalGroundLayers, QueryTriggerInteraction.Ignore);
+            }
+
+        }
+		*/
+
+        private void CameraRotation()
 		{
-			// if there is an input
-			if (_input.look.sqrMagnitude >= _threshold)
+			if (Time.timeScale == 0f)
 			{
-				//Don't multiply mouse input by Time.deltaTime
-				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-				
-				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+				return;
+			}
+			else
+			{
+				// if there is an input
+				if (_input.look.sqrMagnitude >= _threshold)
+				{
+					//Don't multiply mouse input by Time.deltaTime
+					float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-				// clamp our pitch rotation
-				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+					_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+					_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
 
-				// Update Cinemachine camera target pitch
-				CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+					// clamp our pitch rotation
+					_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-				// rotate the player left and right
-				transform.Rotate(Vector3.up * _rotationVelocity);
+					// Update Cinemachine camera target pitch
+					CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+					// rotate the player left and right
+					transform.Rotate(Vector3.up * _rotationVelocity);
+				}
+
 			}
 		}
+
+
+		private void CrouchCameraPos()
+		{
+			// Determine the target position based on crouch state
+			Vector3 targetPosition = _input.crouch ? crouchViewPos : originViewPos;
+
+			// Smoothly interpolate to the target position
+			CinemachineCameraTarget.transform.localPosition = Vector3.Lerp(CinemachineCameraTarget.transform.localPosition, targetPosition, Time.deltaTime * 10f);
+		}
+
 
 
 
 		private void Move()
 		{
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = MoveSpeed;
+			if (_input.sprint)
+			{
+				targetSpeed = SprintSpeed;
+			}
+			else if (_input.crouch)
+			{
+				targetSpeed = CrouchSpeed;
+			}
+
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

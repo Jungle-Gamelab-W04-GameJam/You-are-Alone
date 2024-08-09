@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b911390c5825014e8377183a7837d3f, type: 2}
+  - {fileID: 2100000, guid: da8221a43ed627749b399bea055d7327, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,7 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 4
-  SprintSpeed: 4
+  SprintSpeed: 7
+  CrouchSpeed: 2.5
   RotationSpeed: 1
   SpeedChangeRate: 10
   JumpHeight: 1.2
@@ -228,10 +229,12 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   CinemachineCameraTarget: {fileID: 3401854872672721215}
   TopClamp: 89
   BottomClamp: -89
+  originViewPos: {x: 0, y: 1.375, z: 0}
+  crouchViewPos: {x: 0, y: 0.7, z: 0}
 --- !u!114 &1927451933558883142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +251,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   canPush: 1
-  strength: 1.1
+  strength: 0.5
 --- !u!114 &7862070682193651501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +269,9 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   interact: 0
+  throwInput: 0
+  use: 0
+  crouch: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -374,6 +380,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: efd8fafe-fdf4-42be-81dc-7c9a560c5f4f
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7862070682193651501}
+        m_TargetAssemblyTypeName: StarterAssets.StarterAssetsInputs, Assembly-CSharp
+        m_MethodName: OnThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 215cf058-6378-404f-85a3-4f5558a4fdf5
+    m_ActionName: Player/Throw[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7862070682193651501}
+        m_TargetAssemblyTypeName: StarterAssets.StarterAssetsInputs, Assembly-CSharp
+        m_MethodName: OnUse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 42f92518-a031-43f5-9381-ab9fa6ff77be
+    m_ActionName: Player/Use[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7862070682193651501}
+        m_TargetAssemblyTypeName: StarterAssets.StarterAssetsInputs, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f4411abc-f32c-4483-82e8-2e669742db23
+    m_ActionName: Player/Crouch[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -391,9 +445,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1396284d590bc4497a73392afe9d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 20
+  distance: 10
   whatIsTarget:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   holdingProp: {fileID: 0}
-  pickUpOffset: 2
+  pickUpOffset: 1.5
+  throwForce: 10
+  isZoomIn: 0

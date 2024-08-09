@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2030850653561545748}
   - component: {fileID: 2475315829553610367}
   - component: {fileID: 3676612119935641102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8031552162263990726}
   - component: {fileID: 8056675154279940716}
   - component: {fileID: 2366514799472763718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5482543962894970520}
   - component: {fileID: 7822317521317501394}
   - component: {fileID: 4125951068889882365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spyglass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 9146654417961475154}
   - component: {fileID: 5368297588908231423}
   - component: {fileID: 7643679913746781452}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spyglass
   m_TagString: Spyglass
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &5368297588908231423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 0}
-  spyglassFOV: 1
+  spyglassFOV: 20
   childObject: {fileID: 6144559933970621070}
 --- !u!65 &7643679913746781452
 BoxCollider:
@@ -345,8 +345,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10275924, y: 0.10178095, z: 0.3804839}
-  m_Center: {x: 0.00015039742, y: -0.00041267276, z: 0.08221765}
+  m_Size: {x: 0.10275924, y: 0.10178095, z: 0.37369382}
+  m_Center: {x: 0.00015039742, y: -0.00041267276, z: -0.085032165}
 --- !u!1 &6144559933970621070
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5945862149735435328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6144559933970621070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -382,7 +382,7 @@ Transform:
   - {fileID: 8031552162263990726}
   - {fileID: 5482543962894970520}
   m_Father: {fileID: 7423780044167743356}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &7918786873082220614
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 196440926093441977}
   - component: {fileID: 536471409808296175}
   - component: {fileID: 7502284021146689816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 1986069130502897885}
   - component: {fileID: 854977247054360008}
   - component: {fileID: 6424006639997952913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

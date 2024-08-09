@@ -54,7 +54,7 @@ public class RayInteract : MonoBehaviour
             _input.throwInput = false; // Reset throw input state after input is processed
         }
 
-        if(_input.use)
+        if (_input.use)
         {
             UseItem();
             _input.use = false;
@@ -90,15 +90,75 @@ public class RayInteract : MonoBehaviour
                 {
                     HoldProp(rootObject);
                 }
-                else if (hitTarget.tag == "Interactable")
-                {
-                    Debug.Log("Interacting");
 
-                    // Call internal method of the hitTarget
+                switch (rootObject.tag)
+                {
+                    case "Lever":
+                        LeverController lever = rootObject.GetComponent<LeverController>();
+                        if (lever != null)
+                        {
+                            lever.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in Lever!");
+                        }
+                        break;
+
+                    case "JMLever":
+                        JiminLeverController jiminLever = rootObject.GetComponent<JiminLeverController>();
+                        if (jiminLever != null)
+                        {
+                            jiminLever.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in JMLever!");
+                        }
+                        break;
+
+                    case "KeyPad":
+                        KeypadManager keyPad = rootObject.GetComponent<KeypadManager>();
+                        if (keyPad != null)
+                        {
+                            keyPad.ShowKeypad();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in KeyPad!");
+                        }
+                        break;
+
+                    case "Button":
+                        ButtonController button = rootObject.GetComponent<ButtonController>();
+                        if (button != null)
+                        {
+                            button.Use();
+                        }
+                        else
+                        {
+                            Stage7_ButtonController button7 = rootObject.GetComponent<Stage7_ButtonController>();
+                            if(button7 != null)
+                            {
+                                button7.Use();
+                            }
+                        }
+                        break;
+
+                    case "LightButton":
+                        LightButton lightButton = rootObject.GetComponent<LightButton>();
+                        if (lightButton != null)
+                        {
+                            lightButton.Use();
+                        }
+                        break;
+                    default:
+                        Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
+                        break;
                 }
             }
         }
-        else if(!isZoomIn)
+        else if (!isZoomIn)
         {
             // Drop the held object
             DropProp();
@@ -126,6 +186,14 @@ public class RayInteract : MonoBehaviour
             holdingRb.useGravity = false;
         }
 
+        // Ignore collision between the player and the held object
+        Collider playerCollider = GetComponent<Collider>();
+        if (playerCollider != null && holdingCollider != null)
+        {
+            Physics.IgnoreCollision(playerCollider, holdingCollider, true);
+        } 
+
+
         Debug.Log("Picked up: " + holdingProp.name);
     }
 
@@ -140,6 +208,13 @@ public class RayInteract : MonoBehaviour
                 holdingRb.velocity = Vector3.zero; // Reset velocity before dropping
             }
 
+            // Re-enable collision between the player and the held object
+            Collider playerCollider = GetComponent<Collider>();
+            if (playerCollider != null && holdingCollider != null)
+            {
+                Physics.IgnoreCollision(playerCollider, holdingCollider, false);
+            }
+
             holdingRb.constraints = RigidbodyConstraints.None;
             holdingProp = null;
             moveTarget = null;
@@ -150,7 +225,7 @@ public class RayInteract : MonoBehaviour
 
     private void ThrowProp()
     {
-        if (holdingProp == null){return;}
+        if (holdingProp == null) { return; }
 
         if (holdingRb != null)
         {
@@ -165,6 +240,13 @@ public class RayInteract : MonoBehaviour
             Debug.Log("Threw the object.");
         }
 
+        // Re-enable collision between the player and the held object
+        Collider playerCollider = GetComponent<Collider>();
+        if (playerCollider != null && holdingCollider != null)
+        {
+            Physics.IgnoreCollision(playerCollider, holdingCollider, false);
+        }
+
         holdingRb.constraints = RigidbodyConstraints.None;
         holdingProp = null;
         moveTarget = null;
@@ -172,10 +254,10 @@ public class RayInteract : MonoBehaviour
 
     private void UseItem()
     {
-        Debug.Log("Use Item È£Ãâ");
+        Debug.Log("Use Item È£ï¿½ï¿½");
         if (holdingProp == null) { return; }
 
-        // ¾ÆÀÌÅÛÀ» µé°í ÀÖÀ» ¶§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         switch (holdingProp.tag)
         {
             case "Spyglass":
@@ -184,7 +266,7 @@ public class RayInteract : MonoBehaviour
             case "Camcorder":
                 HandleCamcorder();
                 break;
-            // ´Ù¸¥ ÅÂ±×¸¦ Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+            // ï¿½Ù¸ï¿½ ï¿½Â±×¸ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
             default:
                 Debug.Log("Unhandled item tag: " + holdingProp.tag);
                 break;

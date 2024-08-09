@@ -13,6 +13,14 @@ TagManager:
   - Key
   - Spyglass
   - Camcorder
+  - Interactable
+  - Lever
+  - Button
+  - Knife
+  - Ball
+  - LightButton
+  - JMLever
+  - KeyPad
   layers:
   - Default
   - TransparentFX
@@ -22,7 +30,7 @@ TagManager:
   - UI
   - Prop
   - Object
-  - 
+  - Player
   - 
   - 
   - 

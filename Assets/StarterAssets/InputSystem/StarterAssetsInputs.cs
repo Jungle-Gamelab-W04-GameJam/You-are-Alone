@@ -15,6 +15,8 @@ namespace StarterAssets
 		public bool interact;
 		public bool throwInput;
 		public bool use;
+		public bool crouch;
+		public bool restart;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -22,6 +24,7 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+		public bool cursorUITrigger = false;
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputAction.CallbackContext context)
@@ -46,7 +49,7 @@ namespace StarterAssets
 		public void OnSprint(InputAction.CallbackContext context)
 		{
 			SprintInput(context.performed);
-        }
+		}
 
 		public void OnInteract(InputAction.CallbackContext context)
 		{
@@ -61,6 +64,16 @@ namespace StarterAssets
 		public void OnUse(InputAction.CallbackContext context)
 		{
 			UseInput(context.performed);
+		}
+
+		public void OnCrouch(InputAction.CallbackContext context)
+		{
+			CrouchInput(context.performed);
+		}
+
+		public void OnRestart(InputAction.CallbackContext context)
+		{
+			RestartInput(context.performed);
 		}
 #endif
 
@@ -98,9 +111,19 @@ namespace StarterAssets
 
 		public void UseInput(bool newUseState)
 		{
-		use = newUseState; 
+			use = newUseState;
 		}
-		
+
+		public void CrouchInput(bool newCrouchState)
+		{
+			crouch = newCrouchState;
+		}
+
+		public void RestartInput(bool newRestartState)
+		{
+			restart = newRestartState;
+		}
+
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
@@ -109,7 +132,17 @@ namespace StarterAssets
 
 		private void SetCursorState(bool newState)
 		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			if (Time.timeScale == 0f)
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+			else
+			{
+				Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			}
+
+
 		}
 	}
 
