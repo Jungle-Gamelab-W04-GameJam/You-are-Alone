@@ -30,11 +30,10 @@ public class MoveFloor : MonoBehaviour
 
     void Update()
     {
-        if (collisionCount >= 7)
+        if (collisionCount >= 6)
         {
             isSteppedOn = true;
         }
-
 
         if (isSteppedOn)
         {
