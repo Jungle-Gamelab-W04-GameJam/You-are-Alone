@@ -6420,6 +6420,7 @@ MonoBehaviour:
   openAngle: 90
   openSpeed: 2
   isOpen: 0
+  isStuck: 0
 --- !u!1 &858157821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6313148523077726444, guid: 4954463f5f29dce4da7bfb78e0855e76, type: 3}
@@ -10108,6 +10109,7 @@ MonoBehaviour:
   openAngle: 90
   openSpeed: 2
   isOpen: 0
+  isStuck: 0
 --- !u!1001 &1553636248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11064,6 +11066,7 @@ MonoBehaviour:
   openAngle: 90
   openSpeed: 2
   isOpen: 0
+  isStuck: 0
 --- !u!1001 &1674867167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13620,6 +13623,7 @@ MonoBehaviour:
   openAngle: 90
   openSpeed: 2
   isOpen: 0
+  isStuck: 0
 --- !u!1001 &2000120071
 PrefabInstance:
   m_ObjectHideFlags: 0
