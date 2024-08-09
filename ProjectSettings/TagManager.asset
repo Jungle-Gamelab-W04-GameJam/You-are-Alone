@@ -21,6 +21,9 @@ TagManager:
   - LightButton
   - JMLever
   - KeyPad
+  - InteractableDoor
+  - Screw
+  - ShutLever
   layers:
   - Default
   - TransparentFX

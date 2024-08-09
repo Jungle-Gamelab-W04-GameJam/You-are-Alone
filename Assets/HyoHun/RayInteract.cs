@@ -117,6 +117,18 @@ public class RayInteract : MonoBehaviour
                         }
                         break;
 
+                    case "ShutLever":
+                        ShutDownLever shutLever = rootObject.GetComponent<ShutDownLever>();
+                        if (shutLever != null)
+                        {
+                            shutLever.Use();
+                        }
+                        else
+                        {
+                            Debug.LogError("No Scripts in Lever!");
+                        }
+                        break;
+
                     case "KeyPad":
                         KeypadManager keyPad = rootObject.GetComponent<KeypadManager>();
                         if (keyPad != null)
@@ -138,7 +150,7 @@ public class RayInteract : MonoBehaviour
                         else
                         {
                             Stage7_ButtonController button7 = rootObject.GetComponent<Stage7_ButtonController>();
-                            if(button7 != null)
+                            if (button7 != null)
                             {
                                 button7.Use();
                             }
@@ -152,6 +164,8 @@ public class RayInteract : MonoBehaviour
                             lightButton.Use();
                         }
                         break;
+
+
                     default:
                         Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
                         break;
@@ -191,7 +205,7 @@ public class RayInteract : MonoBehaviour
         if (playerCollider != null && holdingCollider != null)
         {
             Physics.IgnoreCollision(playerCollider, holdingCollider, true);
-        } 
+        }
 
 
         Debug.Log("Picked up: " + holdingProp.name);

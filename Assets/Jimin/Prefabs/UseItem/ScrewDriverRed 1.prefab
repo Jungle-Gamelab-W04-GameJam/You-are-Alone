@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8787013889482408665}
   m_Layer: 6
   m_Name: ScrewDriverRed 1
-  m_TagString: Untagged
+  m_TagString: Screw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918396870203152964}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -80,8 +80,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.04957599, y: 0.3527865, z: 0.049575992}
-  m_Center: {x: 0, y: 0.17639323, z: -0.0000000027939677}
+  m_Size: {x: 0.04957599, y: 0.06622923, z: 0.38520524}
+  m_Center: {x: 0, y: 0.0012345202, z: 0.16781463}
 --- !u!1 &7364635009501901937
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,13 +108,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7364635009501901937}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2288189947073489333}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &4166647419525479223
 MeshFilter:
   m_ObjectHideFlags: 0
