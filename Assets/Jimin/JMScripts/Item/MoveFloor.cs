@@ -8,6 +8,8 @@ public class MoveFloor : MonoBehaviour
     private Rigidbody floorRigidbody; // The Rigidbody component of the platform
     public bool isSteppedOn = false; // Indicates whether the platform is being stepped on
 
+    private int collisionCount = 0;
+
     void Start()
     {
         // Store the original position of the platform
@@ -28,6 +30,12 @@ public class MoveFloor : MonoBehaviour
 
     void Update()
     {
+        if (collisionCount >= 7)
+        {
+            isSteppedOn = true;
+        }
+
+
         if (isSteppedOn)
         {
             MoveDown();
@@ -38,6 +46,18 @@ public class MoveFloor : MonoBehaviour
         }
     }
 
+    void moveToStep(int step)
+    {
+        floorRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        float stepPositionY = Mathf.Lerp(originalPosition.y, lowerYPosition, step / 7.0f);
+        Vector3 targetPosition = new Vector3(originalPosition.x, stepPositionY, originalPosition.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        if (Mathf.Abs(transform.position.y - stepPositionY) < 0.01f)
+        {
+            // Freeze the platform in place when it reaches the target position
+            floorRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
     public void MoveDown()
     {
         // Unfreeze the Y position constraint to allow movement
@@ -77,5 +97,14 @@ public class MoveFloor : MonoBehaviour
     public void SetSteppedOn(bool steppedOn)
     {
         isSteppedOn = steppedOn;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        collisionCount++;
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        collisionCount--;
     }
 }
