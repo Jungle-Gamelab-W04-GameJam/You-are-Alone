@@ -269,7 +269,7 @@ public class RayInteract : MonoBehaviour
 
     private void UseItem()
     {
-        Debug.Log("Use Item ȣ��");
+
         if (holdingProp == null) { return; }
 
         // �������� ��� ���� ��

@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class LockRotation : MonoBehaviour
 {
+    private Vector3 initailPosition;
     private Quaternion initialRotation;
 
     void Start()
     {
-        // 초기 회전을 저장합니다.
+        // 초기 회전 및 위치 저장
+        initailPosition = transform.position;
         initialRotation = transform.rotation;
     }
 
     void LateUpdate()
     {
-        // 자식 오브젝트의 회전을 초기 회전으로 되돌립니다.
+        // 자식 오브젝트 고정
+        transform.position = initailPosition;
         transform.rotation = initialRotation;
     }
 }
