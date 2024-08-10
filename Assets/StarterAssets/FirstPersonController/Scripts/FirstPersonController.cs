@@ -75,6 +75,20 @@ namespace StarterAssets
 
 		private int originalLayer;
 
+		//Crouch
+		private CapsuleCollider playerCol;
+
+		//collider
+		private float originalHeight;
+        private Vector3 originalCenter;
+		//characterController
+		private float originalCCHeight;
+		private Vector3 originalCCCenter;
+
+        private float crouchHeight = 1.0f; // 앉을 때의 높이
+        private Vector3 crouchCenterOffset = new Vector3(0, 0.5f, 0); // 앉을 때의 중심 이동
+
+
 
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
@@ -117,8 +131,16 @@ namespace StarterAssets
 		{
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+
+			playerCol = GetComponentInChildren<CapsuleCollider>();
+            originalHeight = playerCol.height;
+            originalCenter = playerCol.center;
+
+			originalCCHeight = _controller.height;
+			originalCCCenter = _controller.center;
+
 #if ENABLE_INPUT_SYSTEM
-			_playerInput = GetComponent<PlayerInput>();
+            _playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -134,6 +156,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			Crouch();
 		}
 
 		private void LateUpdate()
@@ -333,6 +356,29 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
+
+		private void Crouch()
+		{
+            if (_input.crouch)
+            {
+                // 콜라이더의 높이를 줄이고 중심을 아래로 이동
+                playerCol.height = crouchHeight;
+                playerCol.center = originalCenter - crouchCenterOffset;
+
+				_controller.height = crouchHeight;
+				_controller.center = originalCCCenter - crouchCenterOffset;
+
+            }
+            else
+            {
+                // 콜라이더의 높이와 중심을 원래대로 되돌림
+                playerCol.height = originalHeight;
+                playerCol.center = originalCenter;
+
+				_controller.height = originalCCHeight;
+				_controller.center = originalCCCenter;
+            }
+        }
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
