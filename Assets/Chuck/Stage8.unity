@@ -10982,6 +10982,10 @@ PrefabInstance:
       propertyPath: field of view
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 421505374889392309, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2776576021787081014, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06
