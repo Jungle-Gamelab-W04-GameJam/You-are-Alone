@@ -70,8 +70,8 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-        private int propLayer;
-        private LayerMask originalGroundLayers;
+		private int propLayer;
+		private LayerMask originalGroundLayers;
 
 		private int originalLayer;
 
@@ -80,18 +80,18 @@ namespace StarterAssets
 
 		//collider
 		private float originalHeight;
-        private Vector3 originalCenter;
+		private Vector3 originalCenter;
 		//characterController
 		private float originalCCHeight;
 		private Vector3 originalCCCenter;
 
-        private float crouchHeight = 1.0f; // 앉을 때의 높이
-        private Vector3 crouchCenterOffset = new Vector3(0, 0.5f, 0); // 앉을 때의 중심 이동
+		private float crouchHeight = 1.0f; // 앉을 때의 높이
+		private Vector3 crouchCenterOffset = new Vector3(0, 0.5f, 0); // 앉을 때의 중심 이동
 
 
 
 #if ENABLE_INPUT_SYSTEM
-        private PlayerInput _playerInput;
+		private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
@@ -120,12 +120,12 @@ namespace StarterAssets
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 
-            // 저장 원본 LayerMask
-            originalGroundLayers = GroundLayers;
+			// 저장 원본 LayerMask
+			originalGroundLayers = GroundLayers;
 
-            // Get the layer index for "Prop"
-            propLayer = LayerMask.NameToLayer("Prop");
-        }
+			// Get the layer index for "Prop"
+			propLayer = LayerMask.NameToLayer("Prop");
+		}
 
 		private void Start()
 		{
@@ -133,14 +133,14 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 
 			playerCol = GetComponentInChildren<CapsuleCollider>();
-            originalHeight = playerCol.height;
-            originalCenter = playerCol.center;
+			originalHeight = playerCol.height;
+			originalCenter = playerCol.center;
 
 			originalCCHeight = _controller.height;
 			originalCCCenter = _controller.center;
 
 #if ENABLE_INPUT_SYSTEM
-            _playerInput = GetComponent<PlayerInput>();
+			_playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -164,33 +164,33 @@ namespace StarterAssets
 			CameraRotation();
 			CrouchCameraPos();
 		}
-        private void GroundedCheck()
-        {
-            // Set sphere position, with offset
-            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+		private void GroundedCheck()
+		{
+			// Set sphere position, with offset
+			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 
-            // Check if player is holding a prop
-            if (rayInt.holdingProp != null)
-            {
-                // Store the original layer of the holding prop
-                originalLayer = rayInt.holdingProp.layer;
+			// Check if player is holding a prop
+			if (rayInt.holdingProp != null)
+			{
+				// Store the original layer of the holding prop
+				originalLayer = rayInt.holdingProp.layer;
 
-                // Temporarily change the layer of the holding prop to ignore ground check
-                rayInt.holdingProp.layer = LayerMask.NameToLayer("Ignore Raycast");
+				// Temporarily change the layer of the holding prop to ignore ground check
+				rayInt.holdingProp.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-                // Perform the ground check
-                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+				// Perform the ground check
+				Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
-                // Restore the original layer of the holding prop
-                rayInt.holdingProp.layer = originalLayer;
-            }
-            else
-            {
-                // Perform the ground check
-                Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-            }
-        }
-        /*
+				// Restore the original layer of the holding prop
+				rayInt.holdingProp.layer = originalLayer;
+			}
+			else
+			{
+				// Perform the ground check
+				Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+			}
+		}
+		/*
         private void GroundedCheck()
         {
             // set sphere position, with offset
@@ -211,7 +211,7 @@ namespace StarterAssets
         }
 		*/
 
-        private void CameraRotation()
+		private void CameraRotation()
 		{
 			if (Time.timeScale == 0f)
 			{
@@ -223,7 +223,7 @@ namespace StarterAssets
 				if (_input.look.sqrMagnitude >= _threshold)
 				{
 					//Don't multiply mouse input by Time.deltaTime
-					float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+					float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.2f : Time.deltaTime;
 
 					_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
 					_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
@@ -359,26 +359,26 @@ namespace StarterAssets
 
 		private void Crouch()
 		{
-            if (_input.crouch)
-            {
-                // 콜라이더의 높이를 줄이고 중심을 아래로 이동
-                playerCol.height = crouchHeight;
-                playerCol.center = originalCenter - crouchCenterOffset;
+			if (_input.crouch)
+			{
+				// 콜라이더의 높이를 줄이고 중심을 아래로 이동
+				playerCol.height = crouchHeight;
+				playerCol.center = originalCenter - crouchCenterOffset;
 
 				_controller.height = crouchHeight;
 				_controller.center = originalCCCenter - crouchCenterOffset;
 
-            }
-            else
-            {
-                // 콜라이더의 높이와 중심을 원래대로 되돌림
-                playerCol.height = originalHeight;
-                playerCol.center = originalCenter;
+			}
+			else
+			{
+				// 콜라이더의 높이와 중심을 원래대로 되돌림
+				playerCol.height = originalHeight;
+				playerCol.center = originalCenter;
 
 				_controller.height = originalCCHeight;
 				_controller.center = originalCCCenter;
-            }
-        }
+			}
+		}
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
