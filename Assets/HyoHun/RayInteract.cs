@@ -1,9 +1,5 @@
 using StarterAssets;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class RayInteract : MonoBehaviour
 {
@@ -217,6 +213,11 @@ public class RayInteract : MonoBehaviour
             Physics.IgnoreCollision(playerCollider, holdingCollider, true);
         }
 
+        // Ignore collision between the held object and other "Prop" objects
+        /*
+        int propLayer = LayerMask.NameToLayer("Prop");
+        Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, true);
+        */
 
         Debug.Log("Picked up: " + holdingProp.name);
     }
@@ -225,6 +226,12 @@ public class RayInteract : MonoBehaviour
     {
         if (holdingProp != null)
         {
+            // Re-enable collision between the held object and other "Prop" objects
+            /*
+            int propLayer = LayerMask.NameToLayer("Prop");
+            Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, false);
+            */
+
             // Re-enable gravity
             if (holdingRb != null)
             {
@@ -238,8 +245,11 @@ public class RayInteract : MonoBehaviour
             {
                 Physics.IgnoreCollision(playerCollider, holdingCollider, false);
             }
-
+            
             holdingRb.constraints = RigidbodyConstraints.None;
+
+            holdingRb = null;
+            holdingCollider = null;
             holdingProp = null;
             moveTarget = null;
 
@@ -253,6 +263,12 @@ public class RayInteract : MonoBehaviour
 
         if (holdingRb != null)
         {
+            // Re-enable collision between the held object and other "Prop" objects
+            /*
+            int propLayer = LayerMask.NameToLayer("Prop");
+            Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, false);
+            */
+
             // Apply force in the direction the player is facing
             Vector3 throwDirection = playerCam.transform.forward;
             holdingRb.velocity = Vector3.zero; // Reset velocity before throwing
@@ -270,8 +286,11 @@ public class RayInteract : MonoBehaviour
         {
             Physics.IgnoreCollision(playerCollider, holdingCollider, false);
         }
+        
 
         holdingRb.constraints = RigidbodyConstraints.None;
+        holdingRb = null;
+        holdingCollider = null;
         holdingProp = null;
         moveTarget = null;
     }
@@ -281,7 +300,6 @@ public class RayInteract : MonoBehaviour
 
         if (holdingProp == null) { return; }
 
-        // �������� ��� ���� ��
         switch (holdingProp.tag)
         {
             case "Spyglass":
@@ -321,17 +339,17 @@ public class RayInteract : MonoBehaviour
     /*
     private void MoveHoldingProp()
     {
-        Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
-        Vector3 direction = desiredPosition - holdingRb.position;
-        float distance = direction.magnitude;
+    Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+    Vector3 direction = desiredPosition - holdingRb.position;
+    float distance = direction.magnitude;
 
-        if (Physics.Raycast(holdingRb.position, direction, out RaycastHit hit, distance, ignoreTrigger))
-        {
-            // Adjust position to avoid collision
-            desiredPosition = hit.point - direction.normalized * holdingCollider.bounds.extents.magnitude;
-        }
+    if (Physics.Raycast(holdingRb.position, direction, out RaycastHit hit, distance, ignoreTrigger))
+    {
+        // Adjust position to avoid collision
+        desiredPosition = hit.point - direction.normalized * holdingCollider.bounds.extents.magnitude;
+    }
 
-        holdingRb.MovePosition(desiredPosition);
+    holdingRb.MovePosition(desiredPosition);
     }
     */
     private void MoveHoldingProp()
