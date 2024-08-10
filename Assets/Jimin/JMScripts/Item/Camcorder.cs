@@ -23,7 +23,7 @@ public class CamcorderInteraction : MonoBehaviour
         }
 
         // Initially set the camera to not render
-        camcorderCamera.enabled = false;
+        //camcorderCamera.enabled = false;
 
         // Set Use Gravity to false at the start (if needed)
         camcorderRigidbody.useGravity = false;
