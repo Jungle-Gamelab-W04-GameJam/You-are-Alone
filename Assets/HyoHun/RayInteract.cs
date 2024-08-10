@@ -167,6 +167,15 @@ public class RayInteract : MonoBehaviour
                         break;
 
 
+                    case "DestroyButton":
+                        DestroyButton destroyButton = rootObject.GetComponent<DestroyButton>();
+                        if (destroyButton != null)
+                        {
+                            destroyButton.Use();
+                        }
+                        break;
+
+
                     default:
                         Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
                         break;
@@ -360,7 +369,7 @@ public class RayInteract : MonoBehaviour
         if (playerForward != Vector3.zero)
         {
             // Set the object's rotation to face the same direction as the player
-            if(holdingProp != null)
+            if (holdingProp != null)
                 holdingProp.transform.rotation = Quaternion.LookRotation(playerForward);
         }
     }

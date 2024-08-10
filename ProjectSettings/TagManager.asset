@@ -24,6 +24,7 @@ TagManager:
   - InteractableDoor
   - Screw
   - ShutLever
+  - DestroyButton
   layers:
   - Default
   - TransparentFX
