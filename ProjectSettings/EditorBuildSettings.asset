@@ -21,14 +21,14 @@ EditorBuildSettings:
     path: Assets/Junho/Scenes/Stage4_Junho.unity
     guid: b635a220f9be9644d811ebf1876b7426
   - enabled: 1
+    path: Assets/HyoHun/Hh_Scene_Notice/Stage7_AddingFeature.unity
+    guid: e1bd88f9a4e607447ac1792c509c79cc
+  - enabled: 1
     path: Assets/Chuck/Stage8.unity
     guid: 9ebfc51edecc6dd478df1b9144697f1d
   - enabled: 1
     path: Assets/Chuck/Stage5.unity
     guid: 5388ea12f07145a4a92dd647ab75c42f
-  - enabled: 1
-    path: Assets/HyoHun/Hh_Scene_Notice/Stage7_AddingFeature.unity
-    guid: e1bd88f9a4e607447ac1792c509c79cc
   - enabled: 1
     path: Assets/Scenes/JiminStage.unity
     guid: c1b53fb3c369da142a0c72e50f042881
