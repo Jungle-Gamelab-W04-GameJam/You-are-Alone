@@ -37,12 +37,10 @@ public class Stage7_Door1 : MonoBehaviour
     public void OpenDoor()
     {
         isOpen = true;
-        Debug.Log("Door is opening");
     }
 
     public void CloseDoor()
     {
         isOpen = false;
-        Debug.Log("Door is closing");
     }
 }
