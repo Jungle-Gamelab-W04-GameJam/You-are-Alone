@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 865297457597336921}
   - component: {fileID: 18517432763871053}
   - component: {fileID: 5023610839066378524}
+  - component: {fileID: -4966236130995044021}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -120,3 +121,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a340f74f2355d45a997df2ca342c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorButton: {fileID: 0}
+--- !u!114 &-4966236130995044021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007453733493149142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}

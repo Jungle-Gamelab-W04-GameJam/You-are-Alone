@@ -228,6 +228,14 @@ public class RayInteract : MonoBehaviour
         Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, true);
         */
 
+
+        // 오브젝트를 들 때 윤곽선 표시
+        OutlineEffect outlineEffect = rootObject.GetComponent<OutlineEffect>();
+        if (outlineEffect != null)
+        {
+            outlineEffect.ShowOutline(10f); // 10초 동안 윤곽선 표시
+        }
+
         Debug.Log("Picked up: " + holdingProp.name);
     }
 
@@ -254,7 +262,7 @@ public class RayInteract : MonoBehaviour
             {
                 Physics.IgnoreCollision(playerCollider, holdingCollider, false);
             }
-            
+
             holdingRb.constraints = RigidbodyConstraints.None;
 
             holdingRb = null;
@@ -295,7 +303,7 @@ public class RayInteract : MonoBehaviour
         {
             Physics.IgnoreCollision(playerCollider, holdingCollider, false);
         }
-        
+
 
         holdingRb.constraints = RigidbodyConstraints.None;
         holdingRb = null;

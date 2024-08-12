@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6105500858148258198}
   - component: {fileID: 6246341832428005043}
   - component: {fileID: 7818977785747062046}
+  - component: {fileID: 1088870700959000435}
   m_Layer: 6
   m_Name: Key2
   m_TagString: Key
@@ -95,6 +96,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1088870700959000435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792844321741746343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1001 &7318956436752271839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 4734084508625434, guid: ec51e5945745bff46a238b284dc9aedb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776339964395309478, guid: ec51e5945745bff46a238b284dc9aedb, type: 3}
+      propertyPath: outlineMaterial
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
