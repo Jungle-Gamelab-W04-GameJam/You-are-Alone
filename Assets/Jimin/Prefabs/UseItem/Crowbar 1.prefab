@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6015119393581090565}
   - component: {fileID: 4339258523013038422}
   - component: {fileID: -5446492050650428888}
+  - component: {fileID: 4350155673186477116}
   m_Layer: 6
   m_Name: Crowbar 1
   m_TagString: Heavy Tool
@@ -111,8 +112,8 @@ Transform:
   m_GameObject: {fileID: 4495538927863455616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19963826, y: 0.2149404, z: -0.37526816}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.28841, y: 0.19213, z: -0.51459}
+  m_LocalScale: {x: 1.3712, y: 1.3712, z: 1.3712}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2820987631713079921}
@@ -179,3 +180,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
+--- !u!114 &4350155673186477116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495538927863455616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330d96807e76c6748a6cee88e642d852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakingSound: {fileID: 8300000, guid: df137337e44e04c4dbed3a5625167425, type: 3}

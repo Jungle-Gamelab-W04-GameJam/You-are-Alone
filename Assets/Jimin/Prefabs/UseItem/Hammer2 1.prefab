@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1459059964466361937}
   - component: {fileID: 3934146376665958412}
   - component: {fileID: 6531889361525297322}
+  - component: {fileID: 5801251223508205790}
   m_Layer: 6
   m_Name: Hammer2 1
   m_TagString: Heavy Tool
@@ -96,6 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
+--- !u!114 &5801251223508205790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179146921809527726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330d96807e76c6748a6cee88e642d852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakingSound: {fileID: 8300000, guid: df137337e44e04c4dbed3a5625167425, type: 3}
 --- !u!1 &4110229136673469859
 GameObject:
   m_ObjectHideFlags: 0
