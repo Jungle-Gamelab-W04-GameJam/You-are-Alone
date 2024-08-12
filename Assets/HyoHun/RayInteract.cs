@@ -30,6 +30,8 @@ public class RayInteract : MonoBehaviour
 
     public bool isZoomIn = false;
 
+    public GameObject useNoticeText;
+
     private void Start()
     {
         // Assign the main camera for raycasting
@@ -39,6 +41,12 @@ public class RayInteract : MonoBehaviour
 
     private void Update()
     {
+        if (_input.use)
+        {
+            UseItem();
+            _input.use = false;
+        }
+
         if (_input.interact)
         {
             OnInteract();
@@ -50,14 +58,15 @@ public class RayInteract : MonoBehaviour
             ThrowProp();
             _input.throwInput = false; // Reset throw input state after input is processed
         }
-
-        if (_input.use)
+        
+        if(holdingProp != null && (holdingProp.tag == "Spyglass"))
         {
-            UseItem();
-            _input.use = false;
+            useNoticeText.SetActive(true);
+        } else
+        {
+            useNoticeText.SetActive(false);
         }
-
-    }
+   }
 
     private void FixedUpdate()
     {   //Calling from FixedUpdate for Physical Conflict Detection
@@ -219,6 +228,14 @@ public class RayInteract : MonoBehaviour
         Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, true);
         */
 
+
+        // 오브젝트를 들 때 윤곽선 표시
+        OutlineEffect outlineEffect = rootObject.GetComponent<OutlineEffect>();
+        if (outlineEffect != null)
+        {
+            outlineEffect.ShowOutline(10f); // 10초 동안 윤곽선 표시
+        }
+
         Debug.Log("Picked up: " + holdingProp.name);
     }
 
@@ -245,7 +262,7 @@ public class RayInteract : MonoBehaviour
             {
                 Physics.IgnoreCollision(playerCollider, holdingCollider, false);
             }
-            
+
             holdingRb.constraints = RigidbodyConstraints.None;
 
             holdingRb = null;
@@ -269,7 +286,13 @@ public class RayInteract : MonoBehaviour
             Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, false);
             */
 
-            // Apply force in the direction the player is facing
+            // Apply force in the direction the player is facing 
+
+            //0점 조정
+            Vector3 upOffset = Vector3.up * 0.3f; // 예: 0.2 단위만큼 아래로 이동 (필요에 따라 조정 가능)
+            Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance + upOffset;
+            holdingRb.position = desiredPosition;
+
             Vector3 throwDirection = playerCam.transform.forward;
             holdingRb.velocity = Vector3.zero; // Reset velocity before throwing
             holdingRb.AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
@@ -286,7 +309,7 @@ public class RayInteract : MonoBehaviour
         {
             Physics.IgnoreCollision(playerCollider, holdingCollider, false);
         }
-        
+
 
         holdingRb.constraints = RigidbodyConstraints.None;
         holdingRb = null;
@@ -305,10 +328,11 @@ public class RayInteract : MonoBehaviour
             case "Spyglass":
                 HandleSpyglass();
                 break;
+            /*
             case "Camcorder":
                 HandleCamcorder();
                 break;
-            // �ٸ� �±׸� �߰��� �� �ֽ��ϴ�.
+            */
             default:
                 Debug.Log("Unhandled item tag: " + holdingProp.tag);
                 break;
@@ -354,7 +378,18 @@ public class RayInteract : MonoBehaviour
     */
     private void MoveHoldingProp()
     {
-        Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+        // 아래쪽으로 오프셋을 추가하기 위한 벡터
+        Vector3 downOffset = Vector3.down * 0.4f; // 예: 0.2 단위만큼 아래로 이동 (필요에 따라 조정 가능)
+
+        Vector3 desiredPosition;
+        if(holdingProp.tag == "Prop")
+        {
+            desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance + downOffset;
+        }
+        else
+        {
+            desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+        }
         Vector3 direction = desiredPosition - holdingRb.position;
         float distance = direction.magnitude;
 
