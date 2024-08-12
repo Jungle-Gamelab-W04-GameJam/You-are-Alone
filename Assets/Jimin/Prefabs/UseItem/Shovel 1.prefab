@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5542700770272689913}
   - component: {fileID: 123775567660404902}
   - component: {fileID: 556413279264154645}
+  - component: {fileID: 9180550486672560546}
   m_Layer: 6
   m_Name: Shovel 1
   m_TagString: Untagged
@@ -165,3 +166,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.23216107, y: 0.9406954, z: 0.10260305}
   m_Center: {x: -0.0031054765, y: 0.4252115, z: -0.001001345}
+--- !u!114 &9180550486672560546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9097974297865228337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}

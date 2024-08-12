@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 767458772884516191}
   - component: {fileID: 767458772870707705}
   - component: {fileID: 767458772884812158}
+  - component: {fileID: 6047855220413242938}
   m_Layer: 0
   m_Name: Reinforced_Rubber_Belt 1
   m_TagString: Untagged
@@ -79,6 +80,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.41151577, y: 0.9325557, z: 0.05173591}
   m_Center: {x: 0.02011004, y: -0.0060330033, z: 0.024132049}
+--- !u!114 &6047855220413242938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767458772884812159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1001 &9163833550218352262
 PrefabInstance:
   m_ObjectHideFlags: 0
