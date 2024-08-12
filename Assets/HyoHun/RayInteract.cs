@@ -371,7 +371,18 @@ public class RayInteract : MonoBehaviour
     */
     private void MoveHoldingProp()
     {
-        Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+        // 아래쪽으로 오프셋을 추가하기 위한 벡터
+        Vector3 downOffset = Vector3.down * 0.4f; // 예: 0.2 단위만큼 아래로 이동 (필요에 따라 조정 가능)
+
+        Vector3 desiredPosition;
+        if(holdingProp.tag == "Prop")
+        {
+            desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance + downOffset;
+        }
+        else
+        {
+            desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance;
+        }
         Vector3 direction = desiredPosition - holdingRb.position;
         float distance = direction.magnitude;
 
