@@ -309,7 +309,7 @@
                 {
                     "name": "",
                     "id": "3b720912-8450-4c8d-964f-1547f664871b",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

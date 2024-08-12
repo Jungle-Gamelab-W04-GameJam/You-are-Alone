@@ -959,7 +959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2EC\uB9AC\uAE30: Shift"
+  m_text: "\uB2EC\uB9AC\uAE30: <b><#F6FF75>Shift"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b7366c84d8654439a928d85731c680, type: 2}
   m_sharedMaterial: {fileID: -8287797250599354937, guid: 06b7366c84d8654439a928d85731c680, type: 2}
@@ -1251,6 +1251,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}
+--- !u!1 &190780879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6359146582162169560, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}
+  m_PrefabInstance: {fileID: 190780878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &192697697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1802,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB4E4\uAE30, \uB0B4\uB824\uB193\uAE30/\uC0C1\uD638\uC791\uC6A9: E"
+  m_text: "\uB4E4\uAE30, \uB0B4\uB824\uB193\uAE30/\uC0C1\uD638\uC791\uC6A9: <b><#F6FF75>\uC88C\uD074\uB9AD
+    / E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b7366c84d8654439a928d85731c680, type: 2}
   m_sharedMaterial: {fileID: -8287797250599354937, guid: 06b7366c84d8654439a928d85731c680, type: 2}
@@ -3049,7 +3055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC7AC\uC2DC\uC791: R"
+  m_text: "\uC7AC\uC2DC\uC791: <b><#F6FF75>R"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b7366c84d8654439a928d85731c680, type: 2}
   m_sharedMaterial: {fileID: -8287797250599354937, guid: 06b7366c84d8654439a928d85731c680, type: 2}
@@ -3179,7 +3185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.934, y: 2.412}
+  m_AnchoredPosition: {x: 12.934, y: 1.719}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &463701489
@@ -6663,7 +6669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC549\uAE30: Control"
+  m_text: "\uC549\uAE30: <b><#F6FF75>Control"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b7366c84d8654439a928d85731c680, type: 2}
   m_sharedMaterial: {fileID: -8287797250599354937, guid: 06b7366c84d8654439a928d85731c680, type: 2}
@@ -6793,7 +6799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.934, y: 1.935}
+  m_AnchoredPosition: {x: 12.934, y: 1.242}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1038989557 stripped
@@ -7066,7 +7072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBB3C\uAC74 \uC0AC\uC6A9: \uC88C\uD074\uB9AD"
+  m_text: "\uBB3C\uAC74 \uC0AC\uC6A9:  <b><#F6FF75>F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b7366c84d8654439a928d85731c680, type: 2}
   m_sharedMaterial: {fileID: -8287797250599354937, guid: 06b7366c84d8654439a928d85731c680, type: 2}
@@ -8980,7 +8986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB358\uC9C0\uAE30: \uC6B0\uD074\uB9AD"
+  m_text: "\uB358\uC9C0\uAE30:  <b><#F6FF75>\uC6B0\uD074\uB9AD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b7366c84d8654439a928d85731c680, type: 2}
   m_sharedMaterial: {fileID: -8287797250599354937, guid: 06b7366c84d8654439a928d85731c680, type: 2}
@@ -9545,7 +9551,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2895580798086595080, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}
   m_PrefabInstance: {fileID: 190780878}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 190780879}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -10214,6 +10220,10 @@ PrefabInstance:
       propertyPath: pickUpOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+      propertyPath: useNoticeText
+      value: 
+      objectReference: {fileID: 190780879}
     - target: {fileID: 6501121024672532304, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.29
