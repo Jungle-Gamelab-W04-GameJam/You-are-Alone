@@ -4256,6 +4256,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1891099276}
     - target: {fileID: 9109008458599918191, guid: 9c9d11a8a6c51214095f154e543e2b73, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 466022739b1000d42b3d3c5bef72b111, type: 3}
+    - target: {fileID: 9109008458599918191, guid: 9c9d11a8a6c51214095f154e543e2b73, type: 3}
       propertyPath: buttonTime
       value: 2
       objectReference: {fileID: 0}
@@ -20022,6 +20026,10 @@ PrefabInstance:
       propertyPath: Door
       value: 
       objectReference: {fileID: 359449822}
+    - target: {fileID: 9109008458599918191, guid: 9c9d11a8a6c51214095f154e543e2b73, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 466022739b1000d42b3d3c5bef72b111, type: 3}
     - target: {fileID: 9109008458599918191, guid: 9c9d11a8a6c51214095f154e543e2b73, type: 3}
       propertyPath: buttonTime
       value: 60
