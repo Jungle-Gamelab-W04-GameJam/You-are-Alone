@@ -18230,7 +18230,7 @@ PrefabInstance:
     - target: {fileID: 4271241584663279585, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: da4d088d36211ed479681182775bb48e, type: 3}
+      objectReference: {fileID: 8300000, guid: fc8a5f62601719344b1be13a8338e9cc, type: 3}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeText
       value: 
@@ -18244,16 +18244,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1336610412}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: fadeDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeCanvas
       value: 
       objectReference: {fileID: 1911466659}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: showingDuration
+      value: 2.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[0]
       value: "\uB450\uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uB294 \uC2E0\uB8B0\uB3C4 \uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[1]
-      value: "\uD300\uC6D0\uC744 \uBBFF\uACE0 \uBC29\uC5D0 \uB4E4\uC5B4\uAC00\uC2ED\uC2DC\uC624."
+      value: "\uD30C\uD2B8\uB108\uAC00 \uBC29\uC548\uC73C\uB85C \uB4E4\uC5B4\uAC08\uC218
+        \uC788\uB3C4\uB85D \uBC84\uD2BC\uC744 \uB20C\uB7EC\uC8FC\uC2ED\uC2DC\uC624."
       objectReference: {fileID: 0}
     - target: {fileID: 5401675744278945362, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_Name
