@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7882871466470307374}
   - component: {fileID: 1459059964466361937}
   - component: {fileID: 3934146376665958412}
+  - component: {fileID: 6531889361525297322}
   m_Layer: 6
   m_Name: Hammer2 1
   m_TagString: Heavy Tool
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2121219, y: 0.41308668, z: 0.067765415}
   m_Center: {x: -0.01812509, y: 0.19126032, z: -0.005883366}
+--- !u!114 &6531889361525297322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179146921809527726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1 &4110229136673469859
 GameObject:
   m_ObjectHideFlags: 0

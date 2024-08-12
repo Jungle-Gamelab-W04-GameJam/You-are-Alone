@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 87297710482813516}
   - component: {fileID: 1511109933325886730}
   - component: {fileID: 959240834068138078}
+  - component: {fileID: 8365445399793677191}
   m_Layer: 6
   m_Name: Bat 1
   m_TagString: Untagged
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07340892, y: 0.914879, z: 0.089632705}
   m_Center: {x: -0.0001463294, y: 0.46085432, z: 0.0029150546}
+--- !u!114 &8365445399793677191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799048495632402747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1 &8649462618434504007
 GameObject:
   m_ObjectHideFlags: 0

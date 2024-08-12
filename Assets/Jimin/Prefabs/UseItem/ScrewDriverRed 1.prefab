@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2288189947073489333}
   - component: {fileID: 6288088734581682165}
   - component: {fileID: 8787013889482408665}
+  - component: {fileID: -8088448725377951220}
   m_Layer: 6
   m_Name: ScrewDriverRed 1
   m_TagString: Screw
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04957599, y: 0.06622923, z: 0.38520524}
   m_Center: {x: 0, y: 0.0012345202, z: 0.16781463}
+--- !u!114 &-8088448725377951220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918396870203152964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1 &7364635009501901937
 GameObject:
   m_ObjectHideFlags: 0
