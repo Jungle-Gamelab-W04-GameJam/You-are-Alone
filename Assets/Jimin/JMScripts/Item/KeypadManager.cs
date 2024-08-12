@@ -15,12 +15,20 @@ public class KeypadManager : MonoBehaviour
     private float failDisplayTime = 2f; // Time to display the fail message
     private float successDisplayTime = 1f; // Time to display the success message
     public GameObject door; // Reference to the door object to be destroyed
+    public AudioClip doorSound;  // 재생할 소리 파일
+    private AudioSource audioSource;  // 오디오 소스 컴포넌트
 
     void Start()
     {
         // Initially hide the success and fail messages
         successText.gameObject.SetActive(false);
         failText.gameObject.SetActive(false);
+        // 오디오 소스 컴포넌트를 가져오거나 추가
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void OnNumberButtonClick(string number)
@@ -77,6 +85,8 @@ public class KeypadManager : MonoBehaviour
         {
             Destroy(door);
             Debug.Log("Door unlocked and destroyed.");
+            audioSource.PlayOneShot(doorSound);  // 소리 재생
+
         }
     }
 
