@@ -269,7 +269,7 @@ public class RayInteract : MonoBehaviour
             Physics.IgnoreLayerCollision(holdingProp.layer, propLayer, false);
             */
 
-            // Apply force in the direction the player is facing
+            // Apply force in the direction the player is facing 
             Vector3 throwDirection = playerCam.transform.forward;
             holdingRb.velocity = Vector3.zero; // Reset velocity before throwing
             holdingRb.AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
