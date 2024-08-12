@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8870967605161233590}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -224,3 +224,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4352beca9ce1e744ea9ea72d4baa89da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: df137337e44e04c4dbed3a5625167425, type: 3}
