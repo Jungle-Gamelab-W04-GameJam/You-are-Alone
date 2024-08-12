@@ -9,8 +9,8 @@ public class OutlineEffect : MonoBehaviour
 
     private void Start()
     {
-        // 오브젝트의 Renderer 컴포넌트 참조
-        objectRenderer = GetComponent<Renderer>();
+        // 자식 오브젝트의 Renderer 컴포넌트 참조
+        objectRenderer = GetComponentInChildren<Renderer>();
 
         // 원래 머티리얼을 저장
         if (objectRenderer != null)
