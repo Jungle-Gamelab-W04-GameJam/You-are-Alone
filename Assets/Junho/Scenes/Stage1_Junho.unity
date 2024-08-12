@@ -608,6 +608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -1352,6 +1356,10 @@ PrefabInstance:
     - target: {fileID: 4812686621720412421, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_Name
       value: Prop (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
@@ -4198,6 +4206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -5624,6 +5636,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -5920,6 +5936,10 @@ PrefabInstance:
     - target: {fileID: 4812686621720412421, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_Name
       value: Prop (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
@@ -10794,6 +10814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -11727,6 +11751,10 @@ PrefabInstance:
     - target: {fileID: 4812686621720412421, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_Name
       value: Prop (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
@@ -15180,6 +15208,10 @@ PrefabInstance:
     - target: {fileID: 4812686621720412421, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_Name
       value: Prop
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849041039773966072, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7734620456994814362, guid: f1443d12f4141ca489c8f2c57c4a8ba3, type: 3}
       propertyPath: m_LocalScale.x
