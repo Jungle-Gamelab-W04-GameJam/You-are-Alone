@@ -9980,7 +9980,7 @@ PrefabInstance:
     - target: {fileID: 4271241584663279585, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 57b2750da71f2bb449f8b77291356f84, type: 3}
+      objectReference: {fileID: 8300000, guid: 678a18debb2923949af2db9c28ab0b78, type: 3}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeText
       value: 
@@ -9994,14 +9994,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 267238339}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: showingDuration
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[0]
-      value: "\uB124 \uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uC5D0\uB294 \uC704\uD5D8 \uC694\uC18C\uAC00
-        \uC874\uC7AC\uD569\uB2C8\uB2E4."
+      value: "\uB2E4\uC12F \uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uB294 \uC704\uD5D8\uC694\uC18C
+        \uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[1]
-      value: "\uD574\uC654\uB358 \uB300\uB85C \uD30C\uD2B8\uB108\uB97C \uBBFF\uACE0,
-        \uD14C\uC2A4\uD2B8\uB97C \uC9C4\uD589\uD558\uC2ED\uC2DC\uC624."
+      value: "\uD30C\uD2B8\uB108\uC640 \uD611\uB825\uD558\uC5EC \uD568\uC815\uC744
+        \uD1B5\uACFC\uD558\uB294 \uBC29\uBC95\uC744 \uCC3E\uC73C\uC2ED\uC2DC\uC624."
       objectReference: {fileID: 0}
     - target: {fileID: 5401675744278945362, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_Name

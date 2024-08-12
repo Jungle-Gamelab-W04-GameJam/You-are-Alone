@@ -23525,7 +23525,7 @@ PrefabInstance:
     - target: {fileID: 4271241584663279585, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: fd24a5004ca62164e9375f2bf5e5b57a, type: 3}
+      objectReference: {fileID: 8300000, guid: ae6a7d703e281bc40bb6de07cb2cb296, type: 3}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeText
       value: 
@@ -23543,13 +23543,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2090636530}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: showingDuration
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: noticeMessages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[0]
-      value: "\uC138\uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uB294 \uBC30\uB824\uC2EC \uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4. "
+      value: "\uC138\uBC88\uC9F8 \uD14C\uC2A4\uD2B8\uB294 \uBC30\uB824\uC2EC \uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: noticeMessages.Array.data[1]
-      value: "\uC11C\uB85C\uC758 \uBB38\uC744 \uBA3C\uC800 \uC5F4\uC5B4\uC8FC\uC2DC\uAE38
-        \uBC14\uB78D\uB2C8\uB2E4."
+      value: "\uC0C1\uB300\uBC29\uC774 \uC9C0\uB098\uAC08 \uC218 \uC788\uB3C4\uB85D
+        \uBB38\uC744 \uC5F4\uC5B4\uC8FC\uB294"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: noticeMessages.Array.data[2]
+      value: "\uC7A5\uCE58\uB97C \uCC3E\uC544 \uC791\uB3D9\uC2DC\uD0A4\uC2ED\uC2DC\uC624."
       objectReference: {fileID: 0}
     - target: {fileID: 5401675744278945362, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_Name
