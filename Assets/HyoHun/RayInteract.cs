@@ -30,6 +30,8 @@ public class RayInteract : MonoBehaviour
 
     public bool isZoomIn = false;
 
+    public GameObject useNoticeText;
+
     private void Start()
     {
         // Assign the main camera for raycasting
@@ -55,6 +57,14 @@ public class RayInteract : MonoBehaviour
         {
             ThrowProp();
             _input.throwInput = false; // Reset throw input state after input is processed
+        }
+        
+        if(holdingProp != null && (holdingProp.tag == "Spyglass" ||  holdingProp.tag == "Camcorder"))
+        {
+            useNoticeText.SetActive(true);
+        } else
+        {
+            useNoticeText.SetActive(false);
         }
    }
 

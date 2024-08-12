@@ -11292,6 +11292,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+--- !u!1 &1063803473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2823131514848457880, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+  m_PrefabInstance: {fileID: 1063803472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1069445175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14022,6 +14027,10 @@ PrefabInstance:
       propertyPath: pickUpOffset
       value: 1.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+      propertyPath: useNoticeText
+      value: 
+      objectReference: {fileID: 1063803473}
     - target: {fileID: 6501121024672532304, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.506
@@ -23351,6 +23360,7 @@ MonoBehaviour:
   failText: {fileID: 198355260}
   correctCode: 312749
   door: {fileID: 1331002500}
+  doorSound: {fileID: 0}
 --- !u!1 &2090636530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5918424722926928929, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}

@@ -22295,6 +22295,10 @@ PrefabInstance:
       propertyPath: pickUpOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+      propertyPath: useNoticeText
+      value: 
+      objectReference: {fileID: 2113407751}
     - target: {fileID: 6501121024672532304, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.43
@@ -22734,6 +22738,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+--- !u!1 &2113407751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2823131514848457880, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+  m_PrefabInstance: {fileID: 2113407750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2120432877
 GameObject:
   m_ObjectHideFlags: 0

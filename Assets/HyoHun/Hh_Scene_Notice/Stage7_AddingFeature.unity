@@ -2127,9 +2127,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 379.59998
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 55.276062
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834408180574906955, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -77.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2012832744086053521, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
       propertyPath: m_Name
       value: PlayerFocusCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823131514848457880, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5476808451101351610, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
       propertyPath: m_Pivot.x
@@ -2216,6 +2252,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+--- !u!1 &190487245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2823131514848457880, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+  m_PrefabInstance: {fileID: 190487244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &192010800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27390,6 +27431,10 @@ PrefabInstance:
       propertyPath: pickUpOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+      propertyPath: useNoticeText
+      value: 
+      objectReference: {fileID: 190487245}
     - target: {fileID: 6501121024672532304, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.9
