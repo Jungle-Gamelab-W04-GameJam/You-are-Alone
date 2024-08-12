@@ -17291,7 +17291,7 @@ MonoBehaviour:
   Switch: 0
   LeverDown: {fileID: 1105283218}
   LeverUp: {fileID: 1445494675}
-  Door3: {fileID: 0}
+  Door3: {fileID: 1661314016}
   Door4: {fileID: 1654904950}
   Door5: {fileID: 1992683972}
   Door6: {fileID: 1546058417}

@@ -59,7 +59,7 @@ public class RayInteract : MonoBehaviour
             _input.throwInput = false; // Reset throw input state after input is processed
         }
         
-        if(holdingProp != null && (holdingProp.tag == "Spyglass" ||  holdingProp.tag == "Camcorder"))
+        if(holdingProp != null && (holdingProp.tag == "Spyglass"))
         {
             useNoticeText.SetActive(true);
         } else
@@ -287,6 +287,12 @@ public class RayInteract : MonoBehaviour
             */
 
             // Apply force in the direction the player is facing 
+
+            //0점 조정
+            Vector3 upOffset = Vector3.up * 0.3f; // 예: 0.2 단위만큼 아래로 이동 (필요에 따라 조정 가능)
+            Vector3 desiredPosition = playerCam.transform.position + playerCam.transform.forward * targetDistance + upOffset;
+            holdingRb.position = desiredPosition;
+
             Vector3 throwDirection = playerCam.transform.forward;
             holdingRb.velocity = Vector3.zero; // Reset velocity before throwing
             holdingRb.AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
@@ -322,10 +328,11 @@ public class RayInteract : MonoBehaviour
             case "Spyglass":
                 HandleSpyglass();
                 break;
+            /*
             case "Camcorder":
                 HandleCamcorder();
                 break;
-            // �ٸ� �±׸� �߰��� �� �ֽ��ϴ�.
+            */
             default:
                 Debug.Log("Unhandled item tag: " + holdingProp.tag);
                 break;
