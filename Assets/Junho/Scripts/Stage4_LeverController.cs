@@ -29,8 +29,6 @@ public class Stage4_LeverController : MonoBehaviour
         {
             door_Controller.CloseDoor();
         }
-
-
     }
 
 }
