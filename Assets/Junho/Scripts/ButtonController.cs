@@ -14,11 +14,19 @@ public class ButtonController : MonoBehaviour
     private MonoBehaviour doorControl;
     private Material TrueMaterial;
     private Material FalseMaterial;
-
+    public AudioClip doorSound;  // ì¬ìƒí•  ì†Œë¦¬ íŒŒì¼
+    private AudioSource audioSource;  // ì˜¤ë””ì˜¤ ì†ŒìŠ¤ ì»´í¬ë„ŒíŠ¸
 
     // Start is called before the first frame update
     void Start()
     {
+        // ì˜¤ë””ì˜¤ ì†ŒìŠ¤ ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì ¸ì˜¤ê±°ë‚˜ ì¶”ê°€
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         ButtonTrue.SetActive(false);
         ButtonFalse.SetActive(true);
         TrueMaterial = ButtonTrue.transform.GetComponent<Renderer>().material;
@@ -29,12 +37,13 @@ public class ButtonController : MonoBehaviour
               ?? Door.GetComponent<Stage7_Door1>() as MonoBehaviour
               ?? Door.GetComponent<Jimin_Door_Controller>() as MonoBehaviour;
 
-        if(doorControl != null)
+        if (doorControl != null)
         {
-            Debug.Log(("¹® ÄÁÆ®·Ñ·¯ Ã£À½ : " + doorControl.GetType().Name));
-        } else
+            Debug.Log(("ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ Ã£ï¿½ï¿½ : " + doorControl.GetType().Name));
+        }
+        else
         {
-            Debug.Log("¹® ½ºÅ©¸³Æ® Á¸ÀçÇÏÁö ¾ÊÀ½");
+            Debug.Log("ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
     }
 
@@ -47,15 +56,15 @@ public class ButtonController : MonoBehaviour
             ButtonFalse.SetActive(false);
             if (doorControl != null)
             {
-                Debug.Log("¹® ÄÁÆ®·Ñ·¯ ÀÖÀ½");
-                // Stage2_Door_ControllerÀÎÁö È®ÀÎÇÑ ÈÄ, ´Ù¿îÄ³½ºÆÃÇÏ¿© Á¢±Ù
+                Debug.Log("ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½ï¿½ï¿½ï¿½");
+                // Stage2_Door_Controllerï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½Ù¿ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
                 if (doorControl is Stage2_Door_Controller st2Controller)
                 {
                     st2Controller.OpenDoor();
                 }
                 else if (doorControl is Stage7_Door1 st7Controller)
                 {
-                    Debug.Log("¹® ¿­±â È£ÃâµÊ");
+                    Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½");
                     st7Controller.OpenDoor();
                 }
                 else if (doorControl is Jimin_Door_Controller jmController)
@@ -70,7 +79,7 @@ public class ButtonController : MonoBehaviour
             ButtonFalse.SetActive(true);
             if (doorControl != null)
             {
-                // Stage2_Door_ControllerÀÎÁö È®ÀÎÇÑ ÈÄ, ´Ù¿îÄ³½ºÆÃÇÏ¿© Á¢±Ù
+                // Stage2_Door_Controllerï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½Ù¿ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
                 if (doorControl is Stage2_Door_Controller st2Controller)
                 {
                     st2Controller.CloseDoor();
@@ -92,8 +101,9 @@ public class ButtonController : MonoBehaviour
     {
         if (!Switch) // Play only when Switch is false.
         {
-            Debug.Log("¹öÆ° ´­¸²");
             StartCoroutine(SwitchOnCoroutine());
+            audioSource.PlayOneShot(doorSound);  // ì†Œë¦¬ ì¬ìƒ
+
         }
     }
 

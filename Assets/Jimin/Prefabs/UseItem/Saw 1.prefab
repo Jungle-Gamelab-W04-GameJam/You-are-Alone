@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1789638719881438386}
   - component: {fileID: 7165345662535145588}
   - component: {fileID: 329595593492194624}
+  - component: {fileID: 3038665315614084400}
   m_Layer: 6
   m_Name: Saw 1
   m_TagString: Axe
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6370169, y: 0.18270767, z: 0.026668023}
   m_Center: {x: -0.051378235, y: 0.086199164, z: -0.000000008381903}
+--- !u!114 &3038665315614084400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328671322093035564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1 &6809709455878394519
 GameObject:
   m_ObjectHideFlags: 0

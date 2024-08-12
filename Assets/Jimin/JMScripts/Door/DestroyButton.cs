@@ -13,7 +13,8 @@ public class DestroyButton : MonoBehaviour
 
     private Material TrueMaterial;
     private Material FalseMaterial;
-
+    public AudioClip doorSound;  // 재생할 소리 파일
+    private AudioSource audioSource;  // 오디오 소스 컴포넌트
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,12 @@ public class DestroyButton : MonoBehaviour
         FalseMaterial = ButtonFalse.transform.GetComponent<Renderer>().material;
         TrueMaterial.color = Color.green;
         FalseMaterial.color = Color.red;
+        // 오디오 소스 컴포넌트를 가져오거나 추가
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
@@ -52,6 +59,8 @@ public class DestroyButton : MonoBehaviour
         {
             StartCoroutine(SwitchOnCoroutine());
         }
+        audioSource.PlayOneShot(doorSound);  // 소리 재생
+
     }
 
     private IEnumerator SwitchOnCoroutine()

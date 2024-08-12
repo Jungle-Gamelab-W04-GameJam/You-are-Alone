@@ -6,7 +6,8 @@ public class BrokenFloor : MonoBehaviour
     public int maxCollisions = 3; // Number of collisions to fully break the floor
     private int collisionCount = 0; // Current number of collisions
     private Rigidbody floorRigidbody; // The Rigidbody component of the floor
-    private bool isColliding = false; // Track if currently colliding
+    public AudioClip collisionSound; // Sound to play on collision
+    private AudioSource audioSource; // Audio source component
 
     void Start()
     {
@@ -21,14 +22,26 @@ public class BrokenFloor : MonoBehaviour
 
         // Initially freeze all position and rotation constraints
         floorRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
+        // Get or add the AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the object has the tag "Ball" and if not already colliding
-        if ((collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("Prop")) && !isColliding)
+        // Check if the object has the tag "Ball" or "Camcorder"
+        if (collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("Camcorder"))
         {
-            isColliding = true; // Set collision flag
+            // Play the collision sound
+            if (collisionSound != null)
+            {
+                audioSource.PlayOneShot(collisionSound);
+            }
+
             collisionCount++;
 
             if (collisionCount < maxCollisions)
@@ -42,27 +55,15 @@ public class BrokenFloor : MonoBehaviour
                 // Reapply all constraints to lock x-axis rotation again
                 floorRigidbody.constraints = RigidbodyConstraints.FreezeAll;
             }
-            else if (collisionCount == maxCollisions)
+            else
             {
-                // Destroy the child object before enabling gravity
-
-                Destroy(gameObject);
-
-
-
                 // Fully unlock all position and rotation constraints
                 floorRigidbody.constraints = RigidbodyConstraints.None;
                 Debug.Log("Floor is now fully broken and all constraints are removed.");
-            }
-        }
-    }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        // Reset collision flag when the object leaves
-        if (collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("Prop"))
-        {
-            isColliding = false;
+                // Destroy the object after a delay to ensure any sound or effects are complete
+                Destroy(gameObject, collisionSound.length);
+            }
         }
     }
 }

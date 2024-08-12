@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 761382731644985996}
   - component: {fileID: 4630387668767752336}
   - component: {fileID: 7343775174133054303}
+  - component: {fileID: -4444687528707390086}
   m_Layer: 6
   m_Name: KitchenKnife 1
   m_TagString: Knife
@@ -82,6 +83,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &-4444687528707390086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256135841211674619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901cebef73f2a449bcf5320b1617731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: de239894d5761804f8bda2649af080eb, type: 2}
 --- !u!1 &2152039760174432693
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,11 +14,18 @@ public class Stage7_ButtonController : MonoBehaviour
     private Stage7_Door1 doorController;
     private Material TrueMaterial;
     private Material FalseMaterial;
-
+    public AudioClip doorSound;  // 재생할 소리 파일
+    private AudioSource audioSource;  // 오디오 소스 컴포넌트
 
     // Start is called before the first frame update
     void Start()
     {
+        // 오디오 소스 컴포넌트를 가져오거나 추가
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         ButtonTrue.SetActive(false);
         ButtonFalse.SetActive(true);
         TrueMaterial = ButtonTrue.transform.GetComponent<Renderer>().material;
@@ -52,6 +59,8 @@ public class Stage7_ButtonController : MonoBehaviour
         {
             StartCoroutine(SwitchOnCoroutine());
         }
+        audioSource.PlayOneShot(doorSound);  // 소리 재생
+
     }
 
     private IEnumerator SwitchOnCoroutine()
