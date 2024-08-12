@@ -14515,6 +14515,7 @@ MonoBehaviour:
   failText: {fileID: 1788720786}
   correctCode: 231746
   door: {fileID: 399502645}
+  doorSound: {fileID: 8300000, guid: 466022739b1000d42b3d3c5bef72b111, type: 3}
 --- !u!1001 &998873307
 PrefabInstance:
   m_ObjectHideFlags: 0
