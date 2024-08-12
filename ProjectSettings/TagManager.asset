@@ -25,6 +25,7 @@ TagManager:
   - Screw
   - ShutLever
   - DestroyButton
+  - Window
   layers:
   - Default
   - TransparentFX
