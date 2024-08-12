@@ -27,11 +27,13 @@ public class Stage1_Controller : MonoBehaviour
         Text1.SetActive(false);
         Text2.SetActive(false);
         Text3.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Cursor.lockState);
         if (door_Controller1.isOpen && door_Controller2.isOpen)
         {
             Clear = true;

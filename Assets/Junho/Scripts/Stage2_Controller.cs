@@ -58,7 +58,7 @@ public class Stage2_Controller : MonoBehaviour
             button2HoldTime = 0f;
         }
 
-        if (button1HoldTime >= 2.5f && button2HoldTime >= 2.5f)
+        if (button1HoldTime >= 2.65f && button2HoldTime >= 2.65f)
         {
             Clear = true;
         }
