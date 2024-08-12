@@ -8319,6 +8319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiltAngle: -5
   maxCollisions: 3
+  collisionSound: {fileID: 0}
 --- !u!1001 &790610731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15134,6 +15135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiltAngle: -5
   maxCollisions: 3
+  collisionSound: {fileID: 8300000, guid: 5d91de3c0fd6bd64984eabfce98b9c6c, type: 3}
 --- !u!65 &1557087346
 BoxCollider:
   m_ObjectHideFlags: 0
