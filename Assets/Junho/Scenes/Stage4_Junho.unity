@@ -16734,6 +16734,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e32615977c0a9f4688fa0d66b0a93e5, type: 3}
+--- !u!1 &1565911185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2859624743675267378, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
+  m_PrefabInstance: {fileID: 2047090835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1565911186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565911185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7c73724f36eda428f5f4ff1e35812f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiltAngle: -5
+  maxCollisions: 3
+  collisionSound: {fileID: 8300000, guid: 5d91de3c0fd6bd64984eabfce98b9c6c, type: 3}
 --- !u!1001 &1568554160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22626,6 +22646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrokenFloor 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4859393207035744772, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5d91de3c0fd6bd64984eabfce98b9c6c, type: 3}
     - target: {fileID: 5853127110476824349, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
       propertyPath: m_Size.y
       value: 0.9440207
@@ -22646,14 +22670,18 @@ PrefabInstance:
       propertyPath: m_ProvidesContacts
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4859393207035744772, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
     m_RemovedGameObjects:
     - {fileID: 89498201248441853, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 418922936489294296, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1037112915}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2859624743675267378, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565911186}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8393f052f55a142b3bab70b8558e28, type: 3}
 --- !u!1 &2053553034
 GameObject:

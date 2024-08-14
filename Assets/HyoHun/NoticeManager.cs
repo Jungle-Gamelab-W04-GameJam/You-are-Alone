@@ -13,7 +13,7 @@ public class NoticeManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI noticeText;
     [SerializeField] private List<string> noticeMessages;
 
-    [Header("¶ç¿ì±â ½Ã°£ °ü·Ã")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private float startDelay = 1.5f;
     [SerializeField] private float fadeDuration = 0.5f;
     [SerializeField] private float showingDuration = 3f;
@@ -21,11 +21,12 @@ public class NoticeManager : MonoBehaviour
     public bool isShowingNotice;
 
     private void Awake()
-    { 
+    {
         audioSource = GetComponent<AudioSource>();
 
-        if(noticeCanvas != null) { 
-        noticeCanvas.SetActive(false);
+        if (noticeCanvas != null)
+        {
+            noticeCanvas.SetActive(false);
         }
         isShowingNotice = false;
     }
@@ -60,10 +61,11 @@ public class NoticeManager : MonoBehaviour
         if (noticeCanvas != null)
         {
             noticeCanvas.SetActive(true);
+
         }
 
         // Fade in
-        yield return StartCoroutine(FadeNotice(0f, 0.7f,fadeDuration));
+        yield return StartCoroutine(FadeNotice(0f, 0.7f, fadeDuration));
 
         // Stay visible
         yield return new WaitForSeconds(showingDuration);
