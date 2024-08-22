@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement; // SceneManager를 사용하기 위해 추가
 using UnityEngine.UI;
 using System.Collections;
+
 public class NoticeManager : MonoBehaviour
 {
     AudioSource audioSource;
@@ -36,7 +38,15 @@ public class NoticeManager : MonoBehaviour
 
     private void Start()
     {
-        LoadNoticeMessages();
+        language = PlayerPrefs.GetString("SelectedLanguage", "English");
+
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (sceneIndex > 0)
+        {
+            int csvId = sceneIndex - 1;
+            LoadNoticeMessages(csvId);
+        }
 
         if (noticeMessages.Count == 0)
         {
@@ -46,15 +56,18 @@ public class NoticeManager : MonoBehaviour
         StartCoroutine(DisplayNotices());
     }
 
-    private void LoadNoticeMessages()
+    private void LoadNoticeMessages(int csvId)
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, csvFileName);
+        Debug.Log("Attempting to load file from: " + filePath); // 파일 경로 출력
 
         if (File.Exists(filePath))
         {
             string[] data = File.ReadAllLines(filePath);
-            string[] headers = data[0].Split(',');
+            noticeMessages.Clear();
 
+            // 첫 번째 줄 (헤더) 처리
+            string[] headers = data[0].Split(',');
             int languageIndex = -1;
 
             for (int i = 0; i < headers.Length; i++)
@@ -71,8 +84,20 @@ public class NoticeManager : MonoBehaviour
                 for (int i = 1; i < data.Length; i++)
                 {
                     string[] lineData = data[i].Split(',');
-                    string noticeMessage = lineData[languageIndex];
-                    noticeMessages.Add(noticeMessage);
+
+                    if (lineData.Length > languageIndex)
+                    {
+                        if (int.TryParse(lineData[0], out int id) && id == csvId)
+                        {
+                            string noticeMessage = lineData[languageIndex];
+
+                            if (!string.IsNullOrWhiteSpace(noticeMessage))
+                            {
+                                noticeMessages.Add(noticeMessage);
+                            }
+                            break; // ID가 일치하는 첫 메시지만 로드
+                        }
+                    }
                 }
             }
             else
@@ -82,7 +107,7 @@ public class NoticeManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Cannot find CSV file!");
+            Debug.LogError("Cannot find CSV file at path: " + filePath); // 경로가 잘못된 경우
         }
     }
 
