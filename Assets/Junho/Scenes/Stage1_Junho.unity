@@ -1255,11 +1255,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}
---- !u!1 &190780879 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6359146582162169560, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}
-  m_PrefabInstance: {fileID: 190780878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &192697697
 GameObject:
   m_ObjectHideFlags: 0
@@ -9549,7 +9544,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2895580798086595080, guid: b0243a2e0b853c7458bf2289e1a4974e, type: 3}
   m_PrefabInstance: {fileID: 190780878}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190780879}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -10221,7 +10216,7 @@ PrefabInstance:
     - target: {fileID: 2488791084163189462, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: useNoticeText
       value: 
-      objectReference: {fileID: 190780879}
+      objectReference: {fileID: 1559102647}
     - target: {fileID: 6501121024672532304, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.29
@@ -11126,6 +11121,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+--- !u!1 &1559102647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2823131514848457880, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+  m_PrefabInstance: {fileID: 1559102646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561449170
 GameObject:
   m_ObjectHideFlags: 0
