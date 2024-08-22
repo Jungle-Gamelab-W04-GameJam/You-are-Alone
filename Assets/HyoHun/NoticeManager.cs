@@ -1,9 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class NoticeManager : MonoBehaviour
 {
     AudioSource audioSource;
@@ -11,9 +11,12 @@ public class NoticeManager : MonoBehaviour
     [SerializeField] private GameObject noticeCanvas;
     [SerializeField] private Image noticePanel;
     [SerializeField] private TextMeshProUGUI noticeText;
-    [SerializeField] private List<string> noticeMessages;
+    [SerializeField] private string csvFileName = "Localization.csv"; // CSV 파일 이름
+    [SerializeField] private string language = "Korean"; // 기본 언어 설정
 
-    [Header("���� �ð� ����")]
+    private List<string> noticeMessages = new List<string>();
+
+    [Header("공지 시간 설정")]
     [SerializeField] private float startDelay = 1.5f;
     [SerializeField] private float fadeDuration = 0.5f;
     [SerializeField] private float showingDuration = 3f;
@@ -30,14 +33,57 @@ public class NoticeManager : MonoBehaviour
         }
         isShowingNotice = false;
     }
+
     private void Start()
     {
-        if (noticeMessages == null || noticeMessages.Count == 0)
+        LoadNoticeMessages();
+
+        if (noticeMessages.Count == 0)
         {
             return;
         }
 
         StartCoroutine(DisplayNotices());
+    }
+
+    private void LoadNoticeMessages()
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, csvFileName);
+
+        if (File.Exists(filePath))
+        {
+            string[] data = File.ReadAllLines(filePath);
+            string[] headers = data[0].Split(',');
+
+            int languageIndex = -1;
+
+            for (int i = 0; i < headers.Length; i++)
+            {
+                if (headers[i].ToLower() == language.ToLower())
+                {
+                    languageIndex = i;
+                    break;
+                }
+            }
+
+            if (languageIndex != -1)
+            {
+                for (int i = 1; i < data.Length; i++)
+                {
+                    string[] lineData = data[i].Split(',');
+                    string noticeMessage = lineData[languageIndex];
+                    noticeMessages.Add(noticeMessage);
+                }
+            }
+            else
+            {
+                Debug.LogError("Language not found in CSV file.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Cannot find CSV file!");
+        }
     }
 
     private IEnumerator DisplayNotices()
@@ -61,7 +107,6 @@ public class NoticeManager : MonoBehaviour
         if (noticeCanvas != null)
         {
             noticeCanvas.SetActive(true);
-
         }
 
         // Fade in
@@ -104,4 +149,3 @@ public class NoticeManager : MonoBehaviour
         noticeText.color = textColor;
     }
 }
-
