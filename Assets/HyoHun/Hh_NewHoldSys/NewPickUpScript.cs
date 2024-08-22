@@ -28,6 +28,11 @@ public class NewPickUpScript : MonoBehaviour
 
     public GameObject useNoticeText;
 
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
@@ -149,7 +154,7 @@ public class NewPickUpScript : MonoBehaviour
 
 
                         default:
-                            Debug.Log("Unhandled item tag: " + holdingProp.tag + " / OnInteract() called");
+
                             break;
                     }
 

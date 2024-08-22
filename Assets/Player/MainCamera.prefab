@@ -190,7 +190,7 @@ MonoBehaviour:
   player: {fileID: 0}
   holdPos: {fileID: 6905800518189806744}
   distance: 10
-  throwForce: 10
+  throwForce: 20
   holdingProp: {fileID: 0}
   isZoomIn: 0
   useNoticeText: {fileID: 0}
