@@ -60,6 +60,8 @@ public class NoticeManager : MonoBehaviour
         if (noticeCanvas != null)
         {
             noticeCanvas.SetActive(true);
+            noticePanel.gameObject.SetActive(true);
+            noticeText.gameObject.SetActive(true);
         }
 
         // Fade in
