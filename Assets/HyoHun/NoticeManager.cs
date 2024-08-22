@@ -116,7 +116,7 @@ public class NoticeManager : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
         isShowingNotice = true;
 
-        audioSource.Play();
+        //audioSource.Play();
 
         foreach (var message in noticeMessages)
         {
