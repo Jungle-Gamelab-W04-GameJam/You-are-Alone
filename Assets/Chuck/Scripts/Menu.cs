@@ -12,7 +12,11 @@ public class Menu : MonoBehaviour
     public Button quitButton;
     public Button koreanButton;      // Korean 버튼
     public Button englishButton;     // English 버튼
+    public Button creditButton;
+    public GameObject creditPanel;
 
+    public Button closeCreditPanel;
+    public Button closeLanguagePanel;
     private void Start()
     {
         // 초기 언어 설정
@@ -29,6 +33,9 @@ public class Menu : MonoBehaviour
         englishButton.onClick.AddListener(() => OnLanguageSelect("English"));
         playButton.onClick.AddListener(OnPlayButton);
         quitButton.onClick.AddListener(OnQuitButton);
+        creditButton.onClick.AddListener(ToggleCreditPanel);
+        closeCreditPanel.onClick.AddListener(CloseCreditPanel);
+        closeLanguagePanel.onClick.AddListener(CloseLanguagePanel);
     }
 
     public void OnPlayButton()
@@ -40,7 +47,18 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public void ToggleCreditPanel()
+    {
+        creditPanel.SetActive(!creditPanel.activeSelf);
+    }
+    public void CloseCreditPanel()
+    {
+        creditPanel.SetActive(false);
+    }
+    public void CloseLanguagePanel()
+    {
+        languagePanel.SetActive(false);
+    }
     public void OnLanguageButton()
     {
         // 언어 선택 패널 표시/숨기기

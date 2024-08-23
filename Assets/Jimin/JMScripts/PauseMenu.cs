@@ -7,12 +7,19 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     public GameObject languagePanel;
+
+    public GameObject creditPanel;
+
     public Button resumeButton;
     public Button restartButton;
     public Button languageButton;
+    public Button creditButton;
+
     public Button koreanButton;
     public Button englishButton;
     public Button quitButton;
+    public Button closeCreditPanel;
+    public Button closeLanguagePanel;
 
     private void Start()
     {
@@ -24,6 +31,9 @@ public class PauseMenu : MonoBehaviour
         resumeButton.onClick.AddListener(ResumeGame);
         restartButton.onClick.AddListener(RestartLevel);
         languageButton.onClick.AddListener(ToggleLanguagePanel);
+        creditButton.onClick.AddListener(ToggleCreditPanel);
+        closeCreditPanel.onClick.AddListener(CloseCreditPanel);
+        closeLanguagePanel.onClick.AddListener(CloseLanguagePanel);
         koreanButton.onClick.AddListener(() => OnLanguageSelect("Korean"));
         englishButton.onClick.AddListener(() => OnLanguageSelect("English"));
         quitButton.onClick.AddListener(QuitGame);
@@ -50,6 +60,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        CloseCreditPanel();
+        CloseLanguagePanel();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;  // 게임 시간 다시 흐름
 
@@ -78,7 +90,18 @@ public class PauseMenu : MonoBehaviour
     {
         languagePanel.SetActive(!languagePanel.activeSelf);
     }
-
+    public void ToggleCreditPanel()
+    {
+        creditPanel.SetActive(!creditPanel.activeSelf);
+    }
+    public void CloseCreditPanel()
+    {
+        creditPanel.SetActive(false);
+    }
+    public void CloseLanguagePanel()
+    {
+        languagePanel.SetActive(false);
+    }
     public void OnLanguageSelect(string language)
     {
         PlayerPrefs.SetString("SelectedLanguage", language);

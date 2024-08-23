@@ -21,7 +21,7 @@ public class NoticeManager : MonoBehaviour
     [Header("공지 시간 설정")]
     [SerializeField] private float startDelay = 1.5f;
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private float showingDuration = 3f;
+    [SerializeField] private float showingDuration = 5f;
 
     public bool isShowingNotice;
 
