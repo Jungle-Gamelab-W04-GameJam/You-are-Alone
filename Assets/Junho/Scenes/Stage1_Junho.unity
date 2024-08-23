@@ -13909,6 +13909,10 @@ PrefabInstance:
       propertyPath: isShowingNotice
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4831824088874546645, guid: a74c63e8db41b174086066a328d3baae, type: 3}
+      propertyPath: showingDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5401675744278945362, guid: a74c63e8db41b174086066a328d3baae, type: 3}
       propertyPath: m_Name
       value: NoticeManager
