@@ -2476,6 +2476,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 468908, guid: 73d3182f2ceb62f48b8ab3173dc89e20, type: 3}
   m_PrefabInstance: {fileID: 1534158716}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &345687491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1208550769578517226, guid: 38f9eb342a31bb548b6210cd1f29e57d, type: 3}
+  m_PrefabInstance: {fileID: 1474485365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &362772877
 GameObject:
   m_ObjectHideFlags: 0
@@ -8322,6 +8327,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 9096284522967864154, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 345687491}
+    - target: {fileID: 9096284522967864154, guid: 7374e6cedd4783a42a1cc90a8517c291, type: 3}
+      propertyPath: useNoticeText
+      value: 
+      objectReference: {fileID: 1190792346}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8411,6 +8424,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178600513}
   m_Mesh: {fileID: 4300000, guid: 9036409ea7a8c974f80d52b06c8a4af8, type: 3}
+--- !u!1 &1190792346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2823131514848457880, guid: ee3ae3518fb5b064b8978585da80d68e, type: 3}
+  m_PrefabInstance: {fileID: 1559102646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1200605400
 PrefabInstance:
   m_ObjectHideFlags: 0
