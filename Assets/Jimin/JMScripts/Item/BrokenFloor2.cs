@@ -7,7 +7,8 @@ public class BrokenFloor2 : MonoBehaviour
     private int collisionCount = 0; // Current number of collisions
     private Rigidbody floorRigidbody; // The Rigidbody component of the floor
     private bool isColliding = false; // Track if currently colliding
-
+    public AudioClip collisionSound; // Sound to play on collision
+    private AudioSource audioSource; // Audio source component
     void Start()
     {
         // Get the Rigidbody component
@@ -21,6 +22,13 @@ public class BrokenFloor2 : MonoBehaviour
 
         // Initially freeze all position and rotation constraints
         floorRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
+        // Get or add the AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,6 +36,12 @@ public class BrokenFloor2 : MonoBehaviour
         // Check if the object is in the "props" layer and if not already colliding
         if (collision.gameObject.layer == LayerMask.NameToLayer("Prop") && !isColliding)
         {
+            // Play the collision sound
+            if (collisionSound != null)
+            {
+                audioSource.PlayOneShot(collisionSound);
+            }
+
             isColliding = true; // Set collision flag
             collisionCount++;
 
@@ -46,8 +60,8 @@ public class BrokenFloor2 : MonoBehaviour
             {
                 // Fully unlock all position and rotation constraints
                 floorRigidbody.constraints = RigidbodyConstraints.None;
-                // Destroy the floor object itself
-                Destroy(gameObject);
+                // Destroy the object after a delay to ensure any sound or effects are complete
+                Destroy(gameObject, collisionSound.length);
             }
         }
     }
